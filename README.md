@@ -24,3 +24,8 @@ Here is the [homepage](http://stat545.com) of STAT545.
 
 ## How the changes are done
 I created this repo in GitHub and cloned it locally then linked it to a R-project. All the changes are done in R and reflected into GitHub through save-pull-commit-push commands.
+
+## To-Dos
+
+- [ ] Fix indentation problem
+- [ ] Change picture size
