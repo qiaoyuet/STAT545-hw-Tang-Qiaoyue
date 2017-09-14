@@ -16,8 +16,7 @@ This is a repository for STAT545 homework 1. Please comment on my errors if you 
 ## Picture of Me and My Dogs
 
 <img src="me.png" width="200">
-
-![](watermelon.png =100x200)
+<img src="watermelon.png" width="200">
 
 ## Link
 
