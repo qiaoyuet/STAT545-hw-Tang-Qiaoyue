@@ -7,18 +7,16 @@ This is a repository for STAT545 homework 1. Please comment on my errors if you 
 ## About me
 
 - **Qiaoyue Tang**
-      - 1st year Msc. Stat at UBC
-      - Graduated from UBC last year
+    - 1st year Msc. Stat at UBC
+    - Graduated from UBC last year
 - From Nanjing, China
 - Loves Science Fictions and Giraffes
 - Have two dogs named "water" and "melon" in Chinese
 
 ## Picture of Me and My Dogs
 
-<div style="width:100px; height=150px">
-![](me.png)
-![](watermelon.png)
-</div>
+![](me.png =100x200)
+![](watermelon.png =100x200)
 
 ## Link
 
