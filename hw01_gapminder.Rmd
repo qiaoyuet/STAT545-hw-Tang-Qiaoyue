@@ -1,0 +1,70 @@
+---
+title: "hw01_gapminder"
+author: "Qiaoyue Tang"
+date: "2017/9/14"
+output: github_document
+---
+
+```{r}
+library(gapminder)
+library(ggplot2)
+```
+
+### Explore basic information of Gapminder
+
+```{r}
+class(gapminder)
+head(gapminder)
+tail(gapminder)
+str(gapminder)
+names(gapminder)
+dim(gapminder)
+summary(gapminder)
+```
+
+### Visualizing data in Gapminder
+
+```{r}
+plot(lifeExp ~ continent, gapminder, main = "Life Expectancy vs. Continent")
+```
+
+The boxplot plots the life expectancy versus countinent. We may see that Oceania has the least spread and Asia has the largest spread probably due to population. Oceania seems to have the longest life expectancy in average while Africa has the shortest.
+
+```{r}
+plot(lifeExp ~ log(gdpPercap), gapminder, main = "Life Expectancy vs. log-GDP")
+```
+
+The scatterplot plots the life expectancy versus log-GDP. It shows that overall, as log-GDP or GDP increases, life expectancy also increases.
+
+### Individial variables in Gapminder
+
+```{r}
+head(gapminder$gdpPercap)
+summary(gapminder$gdpPercap)
+hist(gapminder$gdpPercap)
+```
+
+We can see that the spread of Gdp per capita is quite large and most data are of low value. Very few data points has large GDP value.
+
+```{r}
+class(gapminder$country)
+levels(gapminder$country)
+nlevels(gapminder$country)
+```
+
+We are able to see all countries investigated in this dataset and get a count.
+
+```{r}
+table(gapminder$continent)
+barplot(table(gapminder$continent), main = "Barplot of Continent")
+```
+
+We can see Africa has the most data entries and Oceania has the least.
+
+```{r}
+p <- ggplot(gapminder,aes(x = gdpPercap, y = lifeExp)) + geom_point(color="pink")
+p <- p + scale_x_log10()
+p
+```
+
+We can see that in general, GDP and life expectancy have a posotive relationship.
