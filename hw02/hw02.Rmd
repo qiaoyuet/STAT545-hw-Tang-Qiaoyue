@@ -83,5 +83,65 @@ dat1 <- gapminder %>%
 dat1
 ```
 
-The scatterplot show the change of life expectancy among countries in Africa over time. The yellow line is the smoothed line that shows the overall trend (loess method implemented). From the scatterplot we can see that overall life expectancy increases as year increases and and the speed of increase is greater before 1990s' than after it.  
+The scatterplot show the change of life expectancy among countries in Africa over time. The yellow line is the smoothed line that shows the overall trend (loess method implemented). From the scatterplot we can see that overall life expectancy increases as year increases and and the speed of increase is greater before 1990s' than after it.
+
+There is one outlier around year 1990 with a very low life expectancy. 
+
+```{r}
+dat1 <- gapminder %>% 
+  filter(continent %in% c("Africa"))
+dat1[which.min(dat1$lifeExp), ]
+```
+
+Using the code above, we can find that its the country Rwanda in 1992.
+
+### Pie Chart of Composition of Continents
+
+```{r}
+dat2 <- gapminder %>% 
+  select(continent) %>% 
+  table() %>% 
+  data.frame()
+
+# Table
+dat2
+# Pie chart
+ggplot(dat2, aes(x="", y=Freq, fill=.)) + geom_bar(width = 1, stat = "identity") + coord_polar("y", start=0) + ggtitle("Pie Chart of Composition of Continents")
+```
+
+From the pie chart we can easily see how many data come from which part of the continent. We may observe that most data entries come from Africa, followed by Asia and Europe. It provides a better visualization than just the table.
+
+### Modelling Life Expectancy vs year using lm
+
+```{r}
+dat3 <- gapminder %>% 
+  select(lifeExp, country, continent, year) %>%
+  filter(continent %in% c("Americas")) %>% 
+  group_by(country)
+
+# mod <- function(dat)
+# {
+# 	linear.model <- lm(lifeExp ~ year, dat)
+# 	lm.out <- setNames(coef(linear.model), c("intercept", "slope"))
+# 	return(lm.out)
+# }
+
+mod <- function(dat, offset = 1952)
+{
+	linear.model <- lm(lifeExp ~ I(year - offset), dat)
+	lm.out <- setNames(coef(linear.model), c("intcpt", "slope"))
+	return(lm.out)
+}
+
+dat3_1 <- do(dat3, intercept = mod(.)[1], slope = mod(.)[2]) %>% 
+  data.frame()
+
+dat3_2 <- inner_join(dat3_1, dat3, by = "country")
+
+ggplot(dat3_2, aes(x=year, y=lifeExp, colour = country)) + geom_abline(slope = slope, intercept = intcpt)
+
+# for (i in dat3_2$country) {
+#   ggplot(dat3_2, aes(x=year, y=lifeExp, colour = country)) + geom_abline(slope=slope, intercept = intercept)
+# }
+```
 
