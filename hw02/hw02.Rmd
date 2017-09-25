@@ -1,0 +1,87 @@
+---
+title: "hw02"
+author: "Qiaoyue Tang"
+date: "2017/9/22"
+output: github_document
+---
+
+```{r, include=FALSE}
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+```
+
+## Smell test the data
+
+```{r}
+str(gapminder)
+```
+
+- Is it a data.frame, a matrix, a vector, a list?
++ Gapminder dataset is a tibble and also a data.frame.
+
+- What’s its class?
++ Gapminder belongs to the class of tibble and dataframe.
+
+```{r}
+ncol(gapminder)
+nrow(gapminder)
+dim(gapminder)
+```
+
+- How many variables/columns?
++ There are 6 columns in gapminder.
+
+- How many rows/observations?
++ There are 1704 rows in gapminder.
+
+- Can you get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
++ We can also get the size information from the function dim() which gives the dimension of the dataframe. 
+
+```{r}
+str(gapminder)
+```
+
+- What data type is each variable?
++ From the str() function we can see the type of each variable. Country and continent are both of type factors; year and population are of type intergers; lifeExp and gdpPercap are of type number.
+
+## Explore Individual Variables
+
+### Continent
+
+```{r}
+## typeof(gapminder$continent)
+levels(gapminder$continent)
+table(gapminder$continent)
+```
+
+- Continent is a categorical variable and is of type factor.
+- There are 5 levels in Continent: "Africa", "Americas", "Asia","Europe" and "Oceania". R seems to organize the levels in alphabetical order.
+- From the table() function, we can see that "Africa" appears the most often and "Oceania" appears the least often.
+
+### Life Expectancy
+
+```{r}
+hist(gapminder$lifeExp)
+summary(gapminder$lifeExp)
+sd(gapminder$lifeExp)
+boxplot(gapminder$lifeExp)
+```
+
+- LifeExp is an quantitive and also contineous variable and is of type number.
+- From the histogram of lifeExp we can see that most values belongs to the range of (70,75). The spread is approximately normal but a bit left skewed.
+- From the summary we can see that the minimum value is 23.60 years and the maximum value is 82.60 with a standard deviation of 12.9. So the data is quite spead out but 50% of them are between values of 48.20 and 70.85. The spread can also be visualized by boxplot.
+
+## Explore Various Plot Types
+
+### Scatterplot of Life Expectancy and Year of Countries in Africa
+```{r}
+dat1 <- gapminder %>% 
+  filter(continent %in% c("Africa")) %>% 
+  ggplot(aes(x=year, y=lifeExp)) + geom_point(alpha = 0.5) + geom_smooth(lwd=3, se = F, color = "yellow") + ggtitle("Life Expectancy vs. Year in Africa")
+
+dat1
+```
+
+The scatterplot show the change of life expectancy among countries in Africa over time. The yellow line is the smoothed line that shows the overall trend (loess method implemented). From the scatterplot we can see that overall life expectancy increases as year increases and and the speed of increase is greater before 1990s' than after it.  
+
