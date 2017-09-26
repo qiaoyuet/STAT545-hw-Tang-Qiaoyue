@@ -7,8 +7,8 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
 ## Links
 
 - Here is the [homepage](http://stat545.com) of STAT545.
-- Link to 
-
+- [hw01](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw01)
+- [hw02](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw02)
 
 ## About me
 
