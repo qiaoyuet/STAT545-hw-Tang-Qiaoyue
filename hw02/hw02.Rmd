@@ -44,7 +44,7 @@ glimpse(gapminder)
 + There are 1704 rows in gapminder.
 
 - Can you get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
-+ We can also get the size information from the function dim(), ncol(), nrow() which gives the dimension of the dataframe, or use head() or tail() to see what the dataframe actually looks like and count. str() and glimpse() would also give information on number of variables etc.
++ We can also get the size information from the function dim(), ncol(), nrow() which gives the dimension of the dataframe, or use head() or tail() to see what the dataframe actually looks like and count. str() and glimpse() would also give information on number of variables etc. dim(), ncol(), nrow() would be more useful when we only want to know the exact count of variables, while hear(), tail(), str(), glimpse() would give a general picture of what the data looks like.
 
 ```{r}
 sapply(gapminder, typeof)
