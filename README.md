@@ -1,4 +1,4 @@
-# Introduction of Myself
+# STAT545 Homework Repository
 
 ## Welcome!
 
