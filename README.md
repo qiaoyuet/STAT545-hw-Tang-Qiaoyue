@@ -2,7 +2,13 @@
 
 ## Welcome!
 
-This is a repository for STAT545 homework 1. Please comment on my errors if you spot one.
+This is a repository for STAT545 homeworks. Please comment on my errors if you spot one.
+
+## Links
+
+- Here is the [homepage](http://stat545.com) of STAT545.
+- Link to 
+
 
 ## About me
 
@@ -18,9 +24,6 @@ This is a repository for STAT545 homework 1. Please comment on my errors if you 
 <img src="me.png" width="200">
 <img src="watermelon.png" width="200">
 
-## Link
-
-Here is the [homepage](http://stat545.com) of STAT545.
 
 ## To-Dos
 
