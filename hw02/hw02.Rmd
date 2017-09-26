@@ -15,10 +15,15 @@ library(ggplot2)
 
 ```{r}
 str(gapminder)
+typeof(gapminder)
 ```
 
 - Is it a data.frame, a matrix, a vector, a list?
-+ Gapminder dataset is a tibble and also a data.frame.
++ Gapminder dataset is a tibble, a data.frame and a list.
+
+```{r}
+class(gapminder)
+```
 
 - What’s its class?
 + Gapminder belongs to the class of tibble and dataframe.
@@ -27,6 +32,9 @@ str(gapminder)
 ncol(gapminder)
 nrow(gapminder)
 dim(gapminder)
+head(gapminder)
+str(gapminder)
+glimpse(gapminder)
 ```
 
 - How many variables/columns?
@@ -36,28 +44,28 @@ dim(gapminder)
 + There are 1704 rows in gapminder.
 
 - Can you get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
-+ We can also get the size information from the function dim() which gives the dimension of the dataframe. 
++ We can also get the size information from the function dim(), ncol(), nrow() which gives the dimension of the dataframe, or use head() or tail() to see what the dataframe actually looks like and count. str() and glimpse() would also give information on number of variables etc.
 
 ```{r}
-str(gapminder)
+sapply(gapminder, typeof)
 ```
 
 - What data type is each variable?
-+ From the str() function we can see the type of each variable. Country and continent are both of type factors; year and population are of type intergers; lifeExp and gdpPercap are of type number.
++ LifeExp and gdpPercap are of type double, and the other variables are of type integer. It is quite surprising that country and continent are of type integer instead of character.
 
 ## Explore Individual Variables
 
 ### Continent
 
 ```{r}
-## typeof(gapminder$continent)
 levels(gapminder$continent)
 table(gapminder$continent)
+barplot(table(gapminder$continent), main = "Bar plot of Number of Entries in Each Continent")
 ```
 
-- Continent is a categorical variable and is of type factor.
+- Continent is a categorical variable and belongs to the class of factor.
 - There are 5 levels in Continent: "Africa", "Americas", "Asia","Europe" and "Oceania". R seems to organize the levels in alphabetical order.
-- From the table() function, we can see that "Africa" appears the most often and "Oceania" appears the least often.
+- From the table() function, we can see that "Africa" appears the most often and "Oceania" appears the least often. The bar graph visualizes the counts.
 
 ### Life Expectancy
 
@@ -74,16 +82,15 @@ boxplot(gapminder$lifeExp)
 
 ## Explore Various Plot Types
 
-### Scatterplot of Life Expectancy and Year of Countries in Africa
+### Scatterplot of Life Expectancy and Year of Countries in Africa and Asia
 ```{r}
 dat1 <- gapminder %>% 
-  filter(continent %in% c("Africa")) %>% 
-  ggplot(aes(x=year, y=lifeExp)) + geom_point(alpha = 0.5) + geom_smooth(lwd=3, se = F, color = "yellow") + ggtitle("Life Expectancy vs. Year in Africa")
-
+  filter(continent %in% c("Africa", "Asia")) %>% 
+  ggplot(aes(x=year, y=lifeExp, color=continent)) + geom_point(alpha = 0.5) + geom_smooth(lwd=3, se = F, method = "loess", color = "yellow") + ggtitle("Life Expectancy vs. Year in Africa and Asia") + labs(x="Year", y="Life Expectancy")
 dat1
 ```
 
-The scatterplot show the change of life expectancy among countries in Africa over time. The yellow line is the smoothed line that shows the overall trend (loess method implemented). From the scatterplot we can see that overall life expectancy increases as year increases and and the speed of increase is greater before 1990s' than after it.
+The scatterplot show the change of life expectancy among countries in Africa and Asia over time. The yellow line is the smoothed line that shows the overall trend (loess method implemented, a commonly used sommthing method for time series data). From the scatterplot we can see that overall life expectancy increases as year increases for both continents and the speed of increase is greater before 1990s' than after it. We can also see that in general, countries in Asia has longer life Expectancies than countries in Africa.
 
 There is one outlier around year 1990 with a very low life expectancy. 
 
@@ -93,7 +100,7 @@ dat1 <- gapminder %>%
 dat1[which.min(dat1$lifeExp), ]
 ```
 
-Using the code above, we can find that its the country Rwanda in 1992.
+Using the code above, we can find that it's the country Rwanda in 1992.
 
 ### Pie Chart of Composition of Continents
 
@@ -111,37 +118,66 @@ ggplot(dat2, aes(x="", y=Freq, fill=.)) + geom_bar(width = 1, stat = "identity")
 
 From the pie chart we can easily see how many data come from which part of the continent. We may observe that most data entries come from Africa, followed by Asia and Europe. It provides a better visualization than just the table.
 
-### Modelling Life Expectancy vs year using lm
+### Density Plot of Comparing Life Expectancy among Continents
+
+```{r}
+ggplot(gapminder, aes(x=lifeExp, fill=continent)) + geom_density(alpha=0.5) + facet_wrap(~year) + scale_x_log10() + labs(y="Density", x="Life Expectancy")
+```
+
+From the density plot we can easily see changes of life expectancy for each continent over time. It seems that Europe almost always has the highest average of life Expectancy since the blue shades are almost always on the far right end. We can also see that Asia seems to change a lot from the start 1967 to the end of 1982 as the peak of green shades shifts rightward.
+
+### Boxplot and Line Graph Comparing Variables among A Specific Group of Countries
 
 ```{r}
 dat3 <- gapminder %>% 
-  select(lifeExp, country, continent, year) %>%
-  filter(continent %in% c("Americas")) %>% 
-  group_by(country)
+  filter(country %in% c("Canada","China","Belgium")) %>% 
+  select(country, lifeExp, year)
 
-# mod <- function(dat)
-# {
-# 	linear.model <- lm(lifeExp ~ year, dat)
-# 	lm.out <- setNames(coef(linear.model), c("intercept", "slope"))
-# 	return(lm.out)
-# }
+ggplot(dat3, aes(x=country, y=lifeExp, fill=country)) + geom_boxplot() + ggtitle("Boxplot of Life Expectancy in Belgium, Canada and China") + geom_point(alpha=0.5) + labs(x="Country", y="Life Expectancy")
+```
 
-mod <- function(dat, offset = 1952)
-{
-	linear.model <- lm(lifeExp ~ I(year - offset), dat)
-	lm.out <- setNames(coef(linear.model), c("intcpt", "slope"))
-	return(lm.out)
-}
+We are interested to compare life expectancy of three specific countries. After filter the dataset, we do a boxplot that shows the average and spread of life expectancy for these countries. From the boxplot we can see that the highest value appears in Canada while the lowest value appear in China. China has the largest spread probably due to its large population. The spread of Belgium and Canada are approximately equal while Canada has higher median.
 
-dat3_1 <- do(dat3, intercept = mod(.)[1], slope = mod(.)[2]) %>% 
-  data.frame()
+```{r}
+dat4 <- gapminder %>% 
+  select(country, gdpPercap, year)
 
-dat3_2 <- inner_join(dat3_1, dat3, by = "country")
+dat5 <- inner_join(dat3,dat4, by = c("country", "year"))
 
-ggplot(dat3_2, aes(x=year, y=lifeExp, colour = country)) + geom_abline(slope = slope, intercept = intcpt)
+ggplot(dat5, aes(x=gdpPercap,y=lifeExp, colour=country)) + geom_point() + geom_line() + facet_wrap(~country) + ggtitle("Comparison of Life Expectancy vs. GDP in Belgium, Canada and China") + labs(x="GDP Per Capita", y="Life Expectancy")
+```
 
-# for (i in dat3_2$country) {
-#   ggplot(dat3_2, aes(x=year, y=lifeExp, colour = country)) + geom_abline(slope=slope, intercept = intercept)
-# }
+From the above graph we are able to see a positive relationship between life expectancy and GDP and compare among these three countries. We can see that Belgium and Canada have similar ratios while China is the one that has a dramatic increase in life expectancy without a corresponding rapid increase in GDP.
+
+## Extra Question
+
+```{r}
+filter(gapminder, country == c("Rwanda", "Afghanistan"))
+```
+
+A problem with the above code is that country has only the length of one string, but this code asks for a double-string. So R would find a row that has country equals to "Rwanda", if it finds it, it will try to search for the next one that has country equals to "Afghnistan". So it skips the some of the values. In fact it misses exactly half of the values.
+
+A correct way to do this would be below:
+```{r}
+filter(gapminder, country == c("Rwanda") | country == "Afghanistan")
+```
+
+To make this into a nice table:
+```{r}
+dat_test <- filter(gapminder, country == c("Rwanda") | country == "Afghanistan")
+library(knitr)
+kable(dat_test, format = "markdown", col.names = c("Country", "Continent", "Year", "Life Expectancy", "Population", "GDP per Capita"), align = "c")
+```
+
+To practice other dplyr functions:
+
+```{r}
+gapminder %>% 
+    filter(country %in% c("Canada", "Algeria"), 
+           year <= 1969, year >= 1960) %>% 
+    select(country, year, gdpPercap, pop) %>% 
+  arrange(year, gdpPercap) %>%
+  mutate(GDP = gdpPercap * pop)
+  
 ```
 
