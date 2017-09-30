@@ -10,6 +10,6 @@ In this homework we further explores the gapminder dataset and hope to get more 
 
 [Return to main directory](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue)
 
-## Describe Process of hw02
+## Describe Process of hw03
 
 
