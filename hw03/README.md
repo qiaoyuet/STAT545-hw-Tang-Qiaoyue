@@ -6,7 +6,7 @@ In this homework we further explores the gapminder dataset and hope to get more 
 
 ## Links to homework submissions
 
-[MD File of hw03]()
+[MD File of hw03](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/blob/master/hw03/hw03.md)
 
 [Return to main directory](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue)
 
