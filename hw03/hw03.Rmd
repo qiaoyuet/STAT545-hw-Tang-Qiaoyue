@@ -18,10 +18,9 @@ dat1 <- gapminder %>%
   group_by(continent) %>% 
   summarize(max_gdp=max(gdpPercap), min_gdp=min(gdpPercap)) %>% 
   mutate(diff=max_gdp-min_gdp)
-dat1
-
 knitr::kable(dat1)
 ```
+
 From the table we can see that the maximun of GDP per Capita over all appears in Asia, and the minimum appears in Africa. I've also included a difference column which tells the difference between the maximum GDP and the minimum GDP. We can see that the largest gap occurs in Asia.
 
 One problem that I hope to solve is to make min_gdp also with 2 digits of decimals, but since summarize does not have an argument that sets decimal places.
@@ -41,6 +40,7 @@ gapminder %>%
   head(n=20) %>% 
   knitr::kable()
 ```
+
 The above table gives a preview of what information we are looking at, but this is not very efficient because there are too many rows so we need a plot to visualize it.
 
 
@@ -76,6 +76,7 @@ dat5<- inner_join(dat3, dat4, by="country")
 names(dat5) <- c("Country", "weighted_avg", "mean")
 knitr::kable(dat5)
 ```
+
 dat1 provides the trimmed life expectancy and dat2 provides the ordinary mean of life expectancy. I joined them together in one table using inner_join. The trimmed mean weights are assigned as 1/sum(1:12), 2/sum(1:12), etc. which puts larger weight on later years and smaller weight on previous years. It would make sense in the case where we believe data collection process are getting more precise, so we want the most accurate data to reflect the true mean.
 
 ```{r}
@@ -96,6 +97,7 @@ dat6 <- gapminder %>%
   head(n=20)
 knitr::kable(dat6)
 ```
+
 The above table shows the life expectancy in the earliest year (1952) and in the last year recorded (2007). Just by observing the first 20 rows we can deduce that most countries would have an upward trend of increasing life expectancy. We'll check it using plots.
 
 ```{r}
