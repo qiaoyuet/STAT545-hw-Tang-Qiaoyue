@@ -14,16 +14,35 @@ library(dplyr)
 ### Task 1: Get the maximum and minimum of GDP per capita for all continents.
 
 ```{r}
-gapminder %>%
+dat1 <- gapminder %>%
   group_by(continent) %>% 
   summarize(max_gdp=max(gdpPercap), min_gdp=min(gdpPercap)) %>% 
   mutate(diff=max_gdp-min_gdp)
+dat1
+
+knitr::kable(dat1)
 ```
 From the table we can see that the maximun of GDP per Capita over all appears in Asia, and the minimum appears in Africa. I've also included a difference column which tells the difference between the maximum GDP and the minimum GDP. We can see that the largest gap occurs in Asia.
 
 One problem that I hope to solve is to make min_gdp also with 2 digits of decimals, but since summarize does not have an argument that sets decimal places.
 
+```{r}
+ggplot(dat1, aes(x=continent, y=max_gdp)) + geom_bar(stat = "identity") + ggtitle("Barplot of Maximum GDP for Each Continent") + theme(plot.title = element_text(hjust = 0.5)) +
+              labs(x="Continent", y="Maximum GDP per Capita")
+```
+
+The barplot above shows a visualization of the maximum GDP across continents.
+
 ### Task 2: Look at the spread of GDP per capita within the continents.
+
+```{r}
+gapminder %>%
+  select(continent, country, year, gdpPercap) %>%
+  head(n=20) %>% 
+  knitr::kable()
+```
+The above table gives a preview of what information we are looking at, but this is not very efficient because there are too many rows so we need a plot to visualize it.
+
 
 ```{r}
 gapminder %>%
@@ -43,16 +62,51 @@ One interesting issue: when I put labs() after theme(), the title alignment is n
 ### Task 3: Compute a trimmed mean of life expectancy for different years.
 
 ```{r}
-dat1 <- gapminder %>%
+dat3 <- gapminder %>%
   select(country, lifeExp, year) %>% 
   group_by(country) %>% 
   summarise(weighted_lifeExp = weighted.mean(lifeExp, c(1:12)/78))
 
-dat2 <- gapminder %>%
+dat4 <- gapminder %>%
   select(country, lifeExp, year) %>% 
   group_by(country) %>%
   summarize(mean(lifeExp))
 
-inner_join(dat1, dat2, by="country")
+dat5<- inner_join(dat3, dat4, by="country")
+names(dat5) <- c("Country", "weighted_avg", "mean")
+knitr::kable(dat5)
 ```
 dat1 provides the trimmed life expectancy and dat2 provides the ordinary mean of life expectancy. I joined them together in one table using inner_join. The trimmed mean weights are assigned as 1/sum(1:12), 2/sum(1:12), etc. which puts larger weight on later years and smaller weight on previous years. It would make sense in the case where we believe data collection process are getting more precise, so we want the most accurate data to reflect the true mean.
+
+```{r}
+ggplot(dat5, aes(x=weighted_avg, y=mean)) + geom_point() +
+  ggtitle("Scatterplot of Trimmed Mean vs Ordinary Mean") +
+              theme(plot.title = element_text(hjust = 0.5)) +
+              labs(x="Weighted Average", y="Ordinary Mean")
+```
+
+From the scatterplot above we can see that doing the trimmed mean does not deviate a lot from the ordinary mean and they clearly have a strong positive correlation. Therefore we can substitute mean by the trimmed mean if needed without causing too much problem for analysis.
+
+### Task 4: How is life expectancy changing over time on different continents?
+
+```{r}
+dat6 <- gapminder %>%
+  select(country, continent, year, lifeExp) %>% 
+  filter(year %in% c(1952,2007)) %>% 
+  head(n=20)
+knitr::kable(dat6)
+```
+The above table shows the life expectancy in the earliest year (1952) and in the last year recorded (2007). Just by observing the first 20 rows we can deduce that most countries would have an upward trend of increasing life expectancy. We'll check it using plots.
+
+```{r}
+gapminder %>% 
+  select(country, continent, year, lifeExp) %>% 
+  group_by(country) %>%
+  arrange(year) %>% 
+  ggplot(aes(x=year, y=lifeExp, group=country)) + geom_path(alpha=0.2) + facet_wrap(~continent) +
+         ggtitle("Change of Life Expectancy Over Time in Different Continents") +
+              theme(plot.title = element_text(hjust = 0.5)) +
+              labs(x="Year", y="Life Expectancy")
+```
+
+From the plots we can see that the overall increasing trend is clear for all continents. Even though some countries have a sudden fall in certain periods, there is no obvious trend of decreasing life expectancy at least.
