@@ -14,14 +14,16 @@ library(tidyr)
 
 ## Part I Data Reshaping
 
-### Activity #3 
+### Activity #2 
 
-Compute some measure of life expectancy for all possible combinations of continent and year. Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year.
-Use knitr::kable() to make these tables look pretty in your rendered homework.
-Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.
+Make a tibble with one row per year and columns for life expectancy for two or more countries.
+Use knitr::kable() to make this table look pretty in your rendered homework.
+Take advantage of this new data shape to scatterplot life expectancy for one country against that of another.
 
 ```{r}
-
+dat_1 <- gapminder %>%
+  filter(country %in% c("China", "Canada","Uganda","Mongolia")) %>%
+  select(country, year, lifeExp)
 ```
 
 
