@@ -33,6 +33,8 @@ knitr::kable(lifeExp_year)
 Table in this form is easier to look at since we can compare each country's life expectancy in the same year across rows and compare the change of life expectancy within a country across years as well.
 
 
+**I borrowed this function from [this link](http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/) because I think sometimes plotting several plots together would be convinient, and this code provides a very easy implementation.**
+
 ```{r}
 # Multiple plot function
 #
@@ -81,7 +83,8 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 }
 ```
 
-I borrowed this function from [this link](http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/) because I think sometimes plotting several plots together would be convinient, and this code provides a very easy implementation.
+
+Using the above function, we can now display 4 ggplots together as one plot.
 
 ```{r}
 p1 <- ggplot(lifeExp_year, aes(x=China, y=Mongolia)) + geom_point(aes(color=year)) +

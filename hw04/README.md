@@ -6,7 +6,7 @@ This homework explores data tidying with tidyr package and join funtions for joi
 
 ## Links to homework submissions
 
-[MD File of hw04](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/blob/master/hw04/hw03.md)
+[MD File of hw04](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/blob/master/hw04/hw04.md)
 
 [Return to main directory](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue)
 
