@@ -5,7 +5,7 @@ date: "2017/10/6"
 output: github_document
 ---
 
-```{r}
+```{r, include=FALSE}
 library(gapminder)
 library(ggplot2)
 library(dplyr)
@@ -24,49 +24,57 @@ country <- c("China","Canada","Argentina","Iraq","Greece","New Zealand","Jamaica
 languages <- c("Mandarin","English","Spainish","Arabic","Greek","English","English","Italian","Malay")
 NATO <- c(0,1,0,0,1,0,0,0,0) # 1-in NATO, 0-not in NATO
 dat_test <- data.frame(country, languages, NATO)
+knitr::kable(dat_test)
 
 gapminder_editted <- gapminder %>% 
   select(country, lifeExp, gdpPercap) %>% 
   group_by(country) %>% 
   summarize(mean_gdpPercap = mean(gdpPercap), mean_lifeExp = mean(lifeExp))
+knitr::kable(head(gapminder_editted))
 ```
 
 I created a dataframe with extra two columnsL: the primary language spoken in a country ("languages") and whether they belong to NATO ("NATO"). I also editted the original gapminder dataset so it contains less information. To be convinient, I condensed gpd and life expectancy in all years into mean so that one country only have one line. Vatican and Brunei are two countries that are not in original gapminder for testing.
 
 ```{r}
-left_join(gapminder_editted, dat_test, by="country")
-
+j1 <- left_join(gapminder_editted, dat_test, by="country")
+knitr::kable(j1)
 ```
 
 Left_join tends to keep all countries in gapminder_editted and all the columns in there too, but added the additional columns from dat_test. Left_join does not include the two new countries since they do not appear in gapminder_editted. There are a lot of NAs since there are substancially less countries in dat_test than in gapminder_editted.
 
 ```{r}
-right_join(gapminder_editted, dat_test, by="country")
-left_join(dat_test, gapminder_editted, by="country")
+j2 <- right_join(gapminder_editted, dat_test, by="country")
+knitr::kable(j2)
+j3 <- left_join(dat_test, gapminder_editted, by="country")
+knitr::kable(j3)
 ```
 
 Right_join would keep all the countries in dat_test and add columns of gapminder_editted to dat_test. All information in dat_test are preserved. NAs appear for mean_gdp and mean_lifeExp since gapminder_editted do not have Vatican and Brunei thus do not have such information. I also observe that doing left_join but switching the order of datasets would give the same output as doing right_join. The order of columns are slightly changed but the contents are the same.
 
 ```{r}
-inner_join(gapminder_editted, dat_test, by="country")
+j4 <- inner_join(gapminder_editted, dat_test, by="country")
+knitr::kable(j4)
 ```
 
 Inner_join keeps only those countries that occur in both datasets. Therefore, information about Vatican and Brunei are dropped. Other than that, information from both dat_test and gapminder_editted are added for those countries appear in both datasets.
 
 ```{r}
-full_join(gapminder_editted, dat_test, by="country")
+j5 <- full_join(gapminder_editted, dat_test, by="country")
+knitr::kable(j5)
 ```
 
 Full_join keeps every country in both datasets and join all the information together. Vantican and Brunei do not have information about mean_gdp and mean_lifeExp so they appear to be NAs; similarly, countries that do not appear in dat_test but appear in gapminder_editted miss information about languages and NATO status.
 
 ```{r}
-anti_join(dat_test, gapminder_editted, by="country")
+j6 <- anti_join(dat_test, gapminder_editted, by="country")
+knitr::kable(j6)
 ```
 
 Anti_join only keeps Vatican and Brunei since it filters dat_test by gapminder_editted, and the only two countries that are not in gapminder_editted are Vatican and Brunei. And none of the columns from gapminder_editted are taken.
 
 ```{r}
-semi_join(dat_test, gapminder_editted, by="country")
+j7 <- semi_join(dat_test, gapminder_editted, by="country")
+knitr::kable(j7)
 ```
 
 Semi_join keeps all observations in dat_test that have a match in gapminder_editted, so Vantican and Brunei are dropped. Again, none of the columns from gapminder_editted are taken.
