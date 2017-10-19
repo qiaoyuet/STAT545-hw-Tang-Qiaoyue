@@ -283,12 +283,17 @@ Using the recode function in package forcats, we can revalue the original levels
 ```{r}
 gap_test <- gapminder %>% 
   filter(country %in% c("Japan","Canada","United Kingdom","Mexico","Korea, Rep.")) %>% 
-  droplevels() %>% 
   mutate(food = fct_recode(country, "Sushi" = "Japan",
                                "Poutine" = "Canada",
                                "Fish&Chips" = "United Kingdom",
                                "Taco" = "Mexico",
-                               "Kimchi" = "Korea, Rep."))
+                               "Kimchi" = "Korea, Rep.")) %>% 
+  droplevels()
+
+
+```
+
+```{r}
 levels(gap_test$country)
 levels(gap_test$food)
 ```
