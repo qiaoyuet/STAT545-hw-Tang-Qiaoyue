@@ -217,7 +217,7 @@ p2 <- ggplot(gapminder, aes(x=gdpPercap, y=lifeExp)) +
                          guide=FALSE)
 ```
 
-Using Multiplot function to juxtapose two plots
+Using Multiplot function to juxtapose two plots from this [link](http://stat545.com/block020_multiple-plots-on-a-page.html#use-the-multiplot-function)
 ```{r, include=FALSE}
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   require(grid)
@@ -273,3 +273,5 @@ ggsave("lifeExp_gdp.png", plot = p1, width = 5, height = 3, dpi = 300) # raster 
 The different arguments in ggsave can be adopted to change the plot size and pixels etc. If we do not specify plot=?, it will autimatically save the last plot. If we indicate with plot=p1, then it will save the specific plot produced above that called p1.
 
 ![The plot saved above can be embedded in the report (in raster format)](/Users/cathy/Desktop/STAT545A/STAT545-hw-Tang-Qiaoyue/hw05/lifeExp_gdp.png)
+
+The png file can be inserted into the report.
