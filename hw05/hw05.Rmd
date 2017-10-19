@@ -256,7 +256,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 }
 ```
 
-```{r, fig.width=5, fig.height=2}
+```{r, fig.width=12, fig.height=5}
 multiplot(p1,p2,cols = 2)
 ```
 
@@ -267,10 +267,9 @@ What I changed is to 1) facet the different continents in subplots so that the p
 ```{r}
 ggsave("modified_plot.pdf")
 ggsave("lifeExp_gdp.pdf", plot = p1, width = 5, height = 5) # vector format
-ggsave("lifeExp_gdp.png", plot = p1, width = 5, height = 5, dpi = 300) # raster format
+ggsave("lifeExp_gdp.png", plot = p1, width = 5, height = 3, dpi = 300) # raster format
 ```
 
 The different arguments in ggsave can be adopted to change the plot size and pixels etc. If we do not specify plot=?, it will autimatically save the last plot. If we indicate with plot=p1, then it will save the specific plot produced above that called p1.
 
-![The plot saved above can be embedded in the report (in raster format)](/lifeExp_gdp.png)
-![The plot saved above can be embedded in the report (in vector format)](/lifeExp_gdp.pdf)
+![The plot saved above can be embedded in the report (in raster format)](/Users/cathy/Desktop/STAT545A/STAT545-hw-Tang-Qiaoyue/hw05/lifeExp_gdp.png)
