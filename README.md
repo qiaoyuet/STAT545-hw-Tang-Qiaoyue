@@ -12,7 +12,7 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
                                        |
 | [HW02](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw02)  | Exploration of Gapminder                              |
 | [HW03](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw03)  | Dplyr and ggplots                                            |
-| [HW04]((https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw04) | Data reshaping and Joins                                  |
+| [HW04](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw04)  | Data reshaping and Joins                                  |
 | [HW05](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw05)  | Factor Exploration, Wrting Files and Visualization Design  |
 
 ## Links
