@@ -15,11 +15,11 @@ library(RColorBrewer)
 ```
 
 
-### Factor Management
+## Factor Management
 
 dataset: Gapminder
 
-#### Drop Oceania
+### Drop Oceania
 
 ```{r}
 dat1 <- gapminder %>% 
@@ -37,7 +37,7 @@ gapminder %>%
 
 The gapminder dataset originally have 1704 rows. After drop, the number of rows decrease to 1680, where we checked that there are 24 observations with continent of "Oceania". The numbers match up. After we drop the level of continents, the number of levels change from 5 to 4. The other variables are not affected.
 
-#### Reorder Levels
+### Reorder Levels
 
 ```{r}
 fct_reorder(dat1$continent, dat1$gdpPercap, fun = max, desc = F) %>% 
@@ -75,7 +75,7 @@ check[with(check, order(mean_lifeExp)), ] %>%
 
 We can see that the new order is exactly ordered by desending mean of life expectancy. (Here we only look at head to avoid lengthy dataframes.)
 
-#### Common Part
+### Common Part
 
 Explore the effects of **arrange** 
 
@@ -109,9 +109,9 @@ ggplot(dat2, aes(x=lifeExp, y=country)) + geom_line() + ggtitle("Plot before Arr
 
 We can see that the levels are now arranged in the order of decreasing mean of life expectancy, and the graph is changed as well. The plot is now using the reordered levels.
 
-### File I/O
+## File I/O
 
-#### Bring Data in
+### Bring Data in
 
 ```{r}
 gap_tsv <- system.file("gapminder.tsv", package = "gapminder")
@@ -283,20 +283,14 @@ Using the recode function in package forcats, we can revalue the original levels
 ```{r}
 gap_test <- gapminder %>% 
   filter(country %in% c("Japan","Canada","United Kingdom","Mexico","Korea, Rep.")) %>% 
-  droplevels()
-
-levels(gap_test$country)
-
-food <- c("Sushi","Poutine","Fish&Chips","Taco","Kimchi")
-
-gap_test$country <- fct_recode(food, "Sushi" = "Japan",
+  droplevels() %>% 
+  mutate(food = fct_recode(country, "Sushi" = "Japan",
                                "Poutine" = "Canada",
                                "Fish&Chips" = "United Kingdom",
                                "Taco" = "Mexico",
-                               "Kimchi" = "Korea, Rep.")
-
+                               "Kimchi" = "Korea, Rep."))
 levels(gap_test$country)
-
-knitr::kable(head(gap_test, n=10))
+levels(gap_test$food)
 ```
 
+We an observe that the levels of countries and the levels of food matches, i.e. Canada is matched to Poutine etc.
