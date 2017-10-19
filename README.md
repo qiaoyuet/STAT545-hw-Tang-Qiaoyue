@@ -4,6 +4,16 @@
 
 This is a repository for STAT545 homeworks. Please comment on my errors if you spot one.
 
+## Table of Contents
+
+| Homework  | Contents                                                   |
+| --------- | ---------------------------------------------------------- |
+| HW01      | Initial Setup                                              |
+| HW02      | Exploration of Gapminder                                   |
+| HW03      | Dplyr and ggplots                                          |
+| HW04      | Data reshaping and Joins                                   |
+| HW05      | Factor Exploration, Wrting Files and Visualization Design  |
+
 ## Links
 
 - Here is the [homepage](http://stat545.com) of STAT545.
