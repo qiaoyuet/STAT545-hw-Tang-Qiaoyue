@@ -10,6 +10,7 @@ library(gapminder)
 library(dplyr)
 library(ggplot2)
 library(forcats)
+library(readr)
 ```
 
 
@@ -106,3 +107,58 @@ ggplot(dat2, aes(x=lifeExp, y=country)) + geom_line() + ggtitle("Plot before Arr
 ```
 
 We can see that the levels are now arranged in the order of decreasing mean of life expectancy, and the graph is changed as well. The plot is now using the reordered levels.
+
+### File I/O
+
+#### Bring Data in
+
+```{r}
+gap_tsv <- system.file("gapminder.tsv", package = "gapminder")
+gapminder <- read_tsv(gap_tsv)
+str(gapminder, give.attr = FALSE)
+```
+
+We can see that when using readr functions, countries and continents are considered characters instead of factors.
+
+```{r}
+gapminder_Asia_lifeExp <- gapminder %>%
+  mutate(country = factor(country),
+         continent = factor(continent)) %>% 
+  filter(continent %in% c("Asia")) %>% 
+  group_by(country) %>% 
+  summarize(mean_lifeExp = mean(lifeExp))
+  
+```
+
+Here we compute the mean life expectancies for each country in Asia, and we want to export this dataset.
+
+```{r}
+write_csv(gapminder_Asia_lifeExp, "gapminder_Asia_lifeExp.csv")
+```
+
+Testing whether reordering levels survives after reading in and out:
+
+Read the previous dataset back in:
+
+```{r}
+gapminder_Asia_lifeExp <- read_csv("gapminder_Asia_lifeExp.csv")
+str(gapminder_Asia_lifeExp, give.attr = FALSE)
+gapminder_Asia_lifeExp$country <- as.factor(gapminder_Asia_lifeExp$country)
+str(gapminder_Asia_lifeExp, give.attr = FALSE)
+levels(gapminder_Asia_lifeExp$country)
+```
+
+Reorder levels of country by the increasing mean of life expectancies:
+
+```{r}
+gapminder_Asia_lifeExp$country <- fct_reorder(gapminder_Asia_lifeExp$country, 
+                                              gapminder_Asia_lifeExp$mean_lifeExp)
+levels(gapminder_Asia_lifeExp$country)
+```
+
+We can see that the levels of countries are now changed. We want to test if the exported dataset is in this order as well:
+
+```{r}
+write_csv(gapminder_Asia_lifeExp, "gapminder_Asia_lifeExp_reorder.csv")
+```
+
