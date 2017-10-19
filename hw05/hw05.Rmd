@@ -1,0 +1,69 @@
+---
+title: "hw05"
+author: "Qiaoyue Tang"
+date: "2017/10/18"
+output: github_document
+---
+
+```{r, include=FALSE}
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+library(forcats)
+```
+
+
+### Factor Management
+
+dataset: Gapminder
+
+#### Drop Oceania
+
+```{r}
+dat1 <- gapminder %>% 
+  filter(continent != c("Oceania")) %>% 
+  droplevels()
+
+t.droplevel <- data.frame(nrow(gapminder), nrow(dat1), nlevels(gapminder$continent), nlevels(dat1$continent))
+names(t.droplevel) <- c("# rows before drop", "# rows after drop", "# levels before drop", "# levels after drop")
+knitr::kable(t.droplevel)
+
+gapminder %>% 
+  filter(continent == "Oceania") %>% 
+  nrow()
+```
+
+The gapminder dataset originally have 1704 rows. After drop, the number of rows decrease to 1680, where we checked that there are 24 observations with continent of "Oceania". The numbers match up. After we drop the level of continents, the number of levels change from 5 to 4. The other variables are not affected.
+
+#### Reorder Levels
+
+```{r}
+fct_reorder(dat1$continent, dat1$gdpPercap, fun = max, desc = F) %>% 
+  levels()
+```
+
+The levels of continent are reordered so that the maximum of GDP are in ascending order. We can check if it is indeed in this order by:
+
+```{r}
+dat1 %>% 
+  group_by(continent) %>% 
+  summarise(max(gdpPercap))
+```
+
+So the order should be Africa, Americas, Europe then Asia which is the same as ordered by the previous function.
+
+```{r}
+fct_reorder(dat1$country, dat1$lifeExp, fun = mean, desc = T) %>% 
+  levels() %>% 
+  head()
+```
+
+The levels of country are reordered so that the mean of life expectancy are in decending order.
+Check this by:
+
+```{r}
+dat1 %>% 
+  group_by(continent) %>% 
+  summarise(max(gdpPercap))
+```
+
