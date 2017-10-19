@@ -136,6 +136,8 @@ Here we compute the mean life expectancies for each country in Asia, and we want
 write_csv(gapminder_Asia_lifeExp, "gapminder_Asia_lifeExp.csv")
 ```
 
+[Link to gapminder_Asia_lifeExp.csv]()
+
 Testing whether reordering levels survives after reading in and out:
 
 Read the previous dataset back in:
@@ -162,3 +164,11 @@ We can see that the levels of countries are now changed. We want to test if the 
 write_csv(gapminder_Asia_lifeExp, "gapminder_Asia_lifeExp_reorder.csv")
 ```
 
+The output file seems to not survive the reordering of levels.
+[Link to gapminder_Asia_lifeExp_reorder.csv]()
+
+```{r}
+saveRDS(gapminder_Asia_lifeExp, "gapminder_Asia_lifeExp_reorder.rds")
+```
+
+[Link to gapminder_Asia_lifeExp_reorder.csv]()
