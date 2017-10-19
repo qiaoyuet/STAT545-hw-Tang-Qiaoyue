@@ -6,8 +6,8 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
 
 ## Table of Contents
 
-| Homework                                                                     | Contents                                                      |
-| -----------------------------------------------------------------------------| ----------------- ---------------------------------------|
+| Homework                                                                      | Contents                                                     |
+| ----------------------------------------------------------------------------- | ----------------- -------------------------------------- |
 | [HW01](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw01)  | Initial Setup        
                                        |
 | [HW02](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw02)  | Exploration of Gapminder                              |
