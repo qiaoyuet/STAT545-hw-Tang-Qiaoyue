@@ -162,13 +162,28 @@ We can see that the levels of countries are now changed. We want to test if the 
 
 ```{r}
 write_csv(gapminder_Asia_lifeExp, "gapminder_Asia_lifeExp_reorder.csv")
+gap_Asia_lifeExp_reorder_csv <- read_csv("gapminder_Asia_lifeExp_reorder.csv")
+gap_Asia_lifeExp_reorder_csv$country <- as.factor(gap_Asia_lifeExp_reorder_csv$country)
+levels(gap_Asia_lifeExp_reorder_csv$country)
 ```
 
 The output file seems to not survive the reordering of levels.
-[Link to gapminder_Asia_lifeExp_reorder.csv]()
 
 ```{r}
 saveRDS(gapminder_Asia_lifeExp, "gapminder_Asia_lifeExp_reorder.rds")
+gap_Asia_lifeExp_reorder_rds <- readRDS("gapminder_Asia_lifeExp_reorder.rds")
+levels(gap_Asia_lifeExp_reorder_rds$country)
 ```
 
-[Link to gapminder_Asia_lifeExp_reorder.csv]()
+We can see that reordering survives using saveRDS and readRDS.
+
+This code is from [STAT545 File I/O website](http://stat545.com/block026_file-out-in.html) to help see the changes of levels better between csv and rds.
+
+```{r}
+country_levels <- tibble(original = head(levels(gapminder_Asia_lifeExp$country)))
+country_levels <- country_levels %>% 
+  mutate(via_csv = head(levels(gap_Asia_lifeExp_reorder_csv$country)),
+         via_rds = head(levels(gap_Asia_lifeExp_reorder_rds$country)))
+knitr::kable(country_levels)
+```
+
