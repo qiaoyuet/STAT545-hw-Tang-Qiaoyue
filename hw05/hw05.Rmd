@@ -289,13 +289,14 @@ gap_test <- gapminder %>%
                                "Taco" = "Mexico",
                                "Kimchi" = "Korea, Rep.")) %>% 
   droplevels()
+gap_test$country <- as.factor(gap_test$country)
 
 
 ```
 
 ```{r}
-levels(gap_test$country)
 levels(gap_test$food)
+levels(gap_test$country)
 ```
 
 We an observe that the levels of countries and the levels of food matches, i.e. Canada is matched to Poutine etc.
