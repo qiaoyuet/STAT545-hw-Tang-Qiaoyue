@@ -8,9 +8,24 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
 
 - Here is the [homepage](http://stat545.com) of STAT545.
 - [hw01](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw01)
+    + Create repository
+    + Edit README
+    + Gapminder exploration in R markdown
 - [hw02](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw02)
+    + Further exploring gapminder
+    + Explore individual variables
+    + Explore various of plots
+    + dplyr
 - [hw03](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw03)
+    + Complete specific tasks using dplyr and ggplot
 - [hw04](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw04)
+    + Data reshaping
+    + Join, Merge functions in R
+- [hw05](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw05)
+    + Explore factors in R
+    + Writing in and exporting files from R
+    + Wrting figures
+    + Visualization design
 
 ## About me
 
