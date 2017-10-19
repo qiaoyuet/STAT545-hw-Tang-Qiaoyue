@@ -62,8 +62,47 @@ The levels of country are reordered so that the mean of life expectancy are in d
 Check this by:
 
 ```{r}
-dat1 %>% 
-  group_by(continent) %>% 
-  summarise(max(gdpPercap))
+check<- dat1 %>% 
+  group_by(country) %>% 
+  summarise(mean(lifeExp)) %>% 
+  data.frame()
+names(check) <- c("country", "mean_lifeExp")
+check[with(check, order(mean_lifeExp)), ] %>% 
+  head()
 ```
 
+We can see that the new order is exactly ordered by desending mean of life expectancy. (Here we only look at head to avoid lengthy dataframes.)
+
+#### Common Part
+
+Explore the effects of **arrange** 
+
+```{r}
+gapminder_subset<- gapminder %>% 
+  filter(continent %in% c("Asia"))
+
+dat2 <- gapminder %>%
+  filter(continent %in% c("Asia")) %>% 
+  arrange(lifeExp)
+
+head(levels(dat2$country), n=10)
+head(levels(gapminder_subset$country), n=10)
+
+ggplot(dat2, aes(x=lifeExp, y=country)) + geom_line() + ggtitle("Plot after Arrange") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(gapminder_subset, aes(x=lifeExp, y=country)) + geom_line() + ggtitle("Plot before Arrange") + theme(plot.title = element_text(hjust = 0.5))
+```
+
+We can see that arrange does not have an effect on the plots, and the levels are the same before and after arrange.
+
+Explore the effects of **reorder and arrange**
+
+```{r}
+dat2$country <- fct_reorder(dat2$country, dat2$lifeExp, fun = mean, desc = T)
+
+head(levels(dat2$country), n=10)
+
+ggplot(dat2, aes(x=lifeExp, y=country)) + geom_line() + ggtitle("Plot before Arrange") + theme(plot.title = element_text(hjust = 0.5))
+```
+
+We can see that the levels are now arranged in the order of decreasing mean of life expectancy, and the graph is changed as well. The plot is now using the reordered levels.
