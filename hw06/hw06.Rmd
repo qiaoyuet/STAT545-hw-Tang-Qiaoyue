@@ -1,0 +1,13 @@
+---
+title: "hw06"
+author: "Qiaoyue Tang"
+date: "2017/11/4"
+output: github_document
+---
+
+```{r, include=FALSE}
+library(repurrrsive)
+library(tidyverse)
+library(stringr)
+library(purrr)
+```
