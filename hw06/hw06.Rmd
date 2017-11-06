@@ -10,4 +10,58 @@ library(repurrrsive)
 library(tidyverse)
 library(stringr)
 library(purrr)
+library(ggplot2)
+library(gapminder)
 ```
+
+# Character Data
+
+- _In code that doesn’t use stringr, you’ll often see paste() and paste0(). What’s the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of NA?_
+
++ The difference between paste() and paste0() is that the default for sep argument is " " in paste and "" in paste0. So if we try to connect "he" and "llo" using default setting in paste, it will give "he llo", while paste0 will give "hello". paste0 will be more efficient if we want no space in between when connecting the strings. `str_c` is the function in stringr that connects strings. It also has "" as default setting.
+
+```{r}
+paste("he", "llo")
+paste0("he","llo")
+str_c("he","llo")
+```
+
++ They handle NAs differently. `str_c` will return only NA if NA appears in one of the strings, but paste and paste0 will convert NA to "NA" and connect it with the other strings.
+
+```{r}
+str_c("hello",NA)
+paste("hello",NA)
+paste0("hello",NA)
+```
+
+# Wrting functions
+
+Linear Regression:
+
+```{r}
+rm(list = ls())
+lin_fit <- function(dat, offset = 1952) {
+  fit <- lm(gdpPercap ~ I(year - offset), dat)
+  setNames(coef(fit), c("intercept", "slope"))
+}
+
+gap_subset <- gapminder %>% 
+  filter(country %in% c("China"))
+
+lin_fit(gap_subset)
+
+ggplot(gap_subset, aes(x=year, y=gdpPercap)) + geom_point() + geom_smooth(method = "lm", se = F)
+```
+
+Quadratic Regression:
+
+```{r}
+rm(list = ls())
+qua_fit <- function(dat, offset = 1952) {
+  fit <- lm(gdpPercap ~ I(year - offset) + I((year - offset)^2), dat)
+  setNames(coef(fit), c("intercept", "coef_quadratic", "slope"))
+}
+
+qua_fit(gap_subset)
+```
+
