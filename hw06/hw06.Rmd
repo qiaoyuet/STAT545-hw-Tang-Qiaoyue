@@ -16,9 +16,11 @@ library(gapminder)
 
 # Character Data
 
-- _In code that doesn’t use stringr, you’ll often see paste() and paste0(). What’s the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of NA?_
+### String Basics
 
-+ The difference between paste() and paste0() is that the default for sep argument is " " in paste and "" in paste0. So if we try to connect "he" and "llo" using default setting in paste, it will give "he llo", while paste0 will give "hello". paste0 will be more efficient if we want no space in between when connecting the strings. `str_c` is the function in stringr that connects strings. It also has "" as default setting.
+*1. In code that doesn’t use stringr, you’ll often see paste() and paste0(). What’s the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of NA?*
+
+- The difference between paste() and paste0() is that the default for sep argument is " " in paste and "" in paste0. So if we try to connect "he" and "llo" using default setting in paste, it will give "he llo", while paste0 will give "hello". paste0 will be more efficient if we want no space in between when connecting the strings. `str_c` is the function in stringr that connects strings. It also has "" as default setting.
 
 ```{r}
 paste("he", "llo")
@@ -26,13 +28,192 @@ paste0("he","llo")
 str_c("he","llo")
 ```
 
-+ They handle NAs differently. `str_c` will return only NA if NA appears in one of the strings, but paste and paste0 will convert NA to "NA" and connect it with the other strings.
+- They handle NAs differently. `str_c` will return only NA if NA appears in one of the strings, but paste and paste0 will convert NA to "NA" and connect it with the other strings.
 
 ```{r}
 str_c("hello",NA)
 paste("hello",NA)
 paste0("hello",NA)
 ```
+
+
+*2. In your own words, describe the difference between the sep and collapse arguments to `str_c()`*
+
+- The sep argument will add strings between arguments, the collapse argument will make the strings to one single string and insert its value in between. Together they can manipulate strings to have different forms. For example,
+
+```{r}
+a <- c("a","b","c")
+b <- c("one","two","three")
+str_c(a,b,sep = ", ")
+str_c(a,b,collapse = " and ")
+str_c(a,b,sep = ", ", collapse = " and ")
+```
+
+*3. Use str_length() and str_sub() to extract the middle character from a string. What will you do if the string has an even number of characters?*
+
+- To extract the middle character from a string with odd length, we can do the following:
+
+```{r}
+my_str <- "hello"
+l <- str_length(my_str)
+str_sub(my_str, l/2+1, l/2+1)
+```
+
+- If the character has even length, we can keep the two center characters like below:
+
+```{r}
+my_str <- "helloworld"
+l <- str_length(my_str)
+str_sub(my_str, l/2, l/2+1)
+```
+
+- In general, we can also use the floor and celling function:
+
+```{r}
+my_strs <- c("hello", "helloworld")
+str_sub(my_strs, floor((str_length(my_strs)+1)/2), ceiling((str_length(my_strs)+1)/2))
+```
+
+*4. What does str_wrap() do? When might you want to use it?*
+
+- `str_wrap` is used to formatting strings to certain width/indent etc. It would be useful when formatting long strings or paragraphs.
+- For example, it would be useful to change the very long labels to fit beter on a graph.
+
+```{r}
+my_str <- "This is a wrapper around stri_wrap which implements the Knuth-Plass paragraph wrapping algorithm."
+str_wrap(my_str, width = 20)
+```
+
+*5. What does str_trim() do? What’s the opposite of str_trim()?*
+
+- str_trim removes the whitespace around a string. We can specify if we only want the left/right whitespace to be removed or both.
+
+```{r}
+my_str <- "   String with whitespaces in between   "
+str_trim(my_str, "right")
+```
+
+- The opposite of `str_trim` is `str_pad` which adds white spaces to either left/right end or both. A little different from `str_trim`, we can speficy the width of whitespaces.
+
+```{r}
+my_str <- "abc"
+str_pad(my_str, 5, "both")
+```
+
+
+*6. Write a function that turns (e.g.) a vector c("a", "b", "c") into the string a, b, and c. Think carefully about what it should do if given a vector of length 0, 1, or 2.*
+
+- The idea is to collapse the string into a single string with "," in between and then add "and" between the second-last and the last strings.
+- To do this, we want to first delete the last string of x, collapse the rest, and then use str_c to connect the trimmed string in first part the and the trimmed last string with ", and ".
+- For strings with length < 2, we want to just return the original string.
+
+```{r}
+connect_str <- function(x, sep = ", ", y = ", and ") {
+  if(length(x) > 1) {
+    first <- str_c(x[-length(x)], collapse = sep)
+    str_c(first, x[length(x)], sep = y)
+  } else {
+      x
+    }
+}
+connect_str(c("a", "b", "c"))
+connect_str("")
+connect_str("a")
+```
+
+
+### Basic Matches
+
+*7. Explain why each of these strings don’t match a \: "\", "\\", "\\\".*
+
+- `\`: this is used to escape character in regular expression.
+- `\\`: this is a string that represent the regular expression so it does not work
+- `\\\`: we need another one to escape the string expression so this does not work either.
+- We need `\\\\` to match a \
+
+*8. How would you match the sequence "'\?*
+
+```{r}
+a <- c("abc","\"'\\","def")
+str_view(a, "\\\"'\\\\")
+```
+
+*9. What patterns will the regular expression \..\..\.. match? How would you represent it as a string?*
+
+- This will match the patterns that have a dot followed by any single character repeated three times. The second dot in \.. is the regular expression for any character, and \. is to escape the special expression of the dot that we actually want to match.
+
+```{r}
+b <- c("abc.abc","stat.u.b.c","abc")
+str_view(b, "\\..\\..\\..")
+```
+
+
+### Anchors
+
+*10. How would you match the literal string "$^$"?*
+
+- We need to use escapes to first represent `$^$` with `\\$\\^\\$` and then use `^` and `$` in the front and end to ensure we only find strings that only ontains `$^$`.
+
+```{r}
+c <- c("$^$", "a$^$b")
+str_view(c, "^\\$\\^\\$$")
+```
+
+*11. Given the corpus of common words in `stringr::words`, create regular expressions that find all words that: (1) Start with "y" (2) End with "x" (3) Are exactly three letters long. (Don’t cheat by using str_length()!) (4) Have seven letters or more. Since this list is long, you might want to use the match argument to str_view() to show only the matching or non-matching words.*
+
+```{r}
+str_view(words, "^y", match = T)
+str_view(words, "x$", match = T)
+str_view(words, "^...$", match = T)
+str_view(words, ".......", match = T)
+```
+
+
+### Character classes and Alternatives
+
+*12. Create regular expressions to find all words that: (1)Start with a vowel. (2)That only contain consonants. (Hint: thinking about matching “not”-vowels.) (3)End with ed, but not with eed. (4)End with ing or ise.*
+
+```{r}
+str_view(words, "^[aeiou]", match = T)
+str_view(words, "^[^aeiou]*$", match = T)
+str_view(words, "[^e]ed$", match = T)
+str_view(words, "i(ng|se)$", match = T)
+```
+
+*13. Empirically verify the rule “i before e except after c”.*
+
+```{r}
+str_view(words, "[^c]ie", match = TRUE)
+```
+
+*14. Is “q” always followed by a “u”?*
+
+```{r}
+str_view(words, "q[^u]", match = TRUE)
+```
+
+- Yes, because R cannot find a match for anything that is "q followed not by u".
+
+*15. Write a regular expression that matches a word if it’s probably written in British English, not American English.*
+
+- British English often use ou instead of o, end with ise instead of ize.
+
+```{r}
+str_view(words, "ou|ise$", match = T)
+```
+
+*16. Create a regular expression that will match telephone numbers as commonly written in your country.*
+
+- We need to use `\\d` to match any digits.
+
+```{r}
+d <- c("123-456-7890", "12345-678-90", "1-2-3-4-5-6-7-8-9-0")
+str_view(d, "\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d")
+```
+
+### Repetition
+
+
 
 # Wrting functions
 
@@ -65,3 +246,4 @@ qua_fit <- function(dat, offset = 1952) {
 qua_fit(gap_subset)
 ```
 
+Robust Regression:
