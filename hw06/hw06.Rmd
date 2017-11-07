@@ -14,7 +14,7 @@ library(ggplot2)
 library(gapminder)
 ```
 
-# Character Data
+# Part 1: Character Data
 
 ### String Basics
 
@@ -234,11 +234,10 @@ str_view(words, "[aeiou]{3,}", match = TRUE)
 str_view(words, "([aeiou][^aeiou]){2,}", match = TRUE)
 ```
 
-*20. Solve the beginner regexp crosswords at https://regexcrossword.com/challenges/beginner.*
 
 ### Grouping and backreferences
 
-_21. Describe, in words, what these expressions will match: (1) (.)\1\1 (2) "(.)(.)\\2\\1" (3) (..)\1 (4) "(.).\\1.\\1" (5) "(.)(.)(.).*\\3\\2\\1"_
+_20. Describe, in words, what these expressions will match: (1) (.)\1\1 (2) "(.)(.)\\2\\1" (3) (..)\1 (4) "(.).\\1.\\1" (5) "(.)(.)(.).*\\3\\2\\1"_
 
 - `(.)\1\1` : This will match a single character repeated three times, e.g. "aaa"
 - `"(.)(.)\\2\\1"`: This will match a pair of characters followed by the same pair of characters in reversed order. e.g. "abba".
@@ -246,7 +245,106 @@ _21. Describe, in words, what these expressions will match: (1) (.)\1\1 (2) "(.)
 - `"(.).\\1.\\1"`: This will match a character followed by any character, the original character, any other character, the original character again. e.g. "abaca".
 - `"(.)(.)(.).*\\3\\2\\1"`: This will match three characters followed by at least 0 characters (any character) followed by the same three characters but in reverse order. e.g. "abc123cba".
 
-# Wrting functions
+*21. Construct regular expressions to match words that: (1) Start and end with the same character. (2) Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.) (3) Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)*
+
+```{r}
+str_view(words, "^(.).*\\1$", match = T)
+str_view(words, "(..).*\\1", match = T)
+str_view(words, "(.).*\\1.*\\1", match = T)
+```
+
+### Detect matches
+
+*22. What word has the highest number of vowels? What word has the highest proportion of vowels? (Hint: what is the denominator?)*
+
+```{r}
+vowels <- str_count(words, "[aeiou]")
+length <- str_length(words)
+data.frame(words = words, num_of_vowels = vowels, length = length) %>% 
+  arrange(desc(counts)) %>% 
+  head()
+
+data.frame(words = words, num_of_vowels = vowels, length = length) %>% 
+  mutate(proportion = vowels/lengths) %>% 
+  arrange(desc(proportion)) %>% 
+  head()
+```
+
+- We can see the words with the most vowels are listed below (there are ties), the maximum number of vowels in a word is 5.
+- The word "a" has the highest proportion of vowels since it is a vowel itself. Other than "a", "area" and "idea" has the second largest proportions.
+
+### Extract matches
+
+*23. From the Harvard sentences data, extract: (1) The first word from each sentence. (2) All words ending in ing. (3) All plurals.*
+
+- Introduce `\b` which allows us to search the whole words. It works like `$` but stands for "word boundaries". I learnt this from [here](https://www.regular-expressions.info/wordboundaries.html).
+
+```{r}
+str_extract(sentences, "[a-z|A-Z]+") %>% head()
+
+ing <- str_subset(sentences, "\\b[A-Z|a-z]+ing\\b")
+str_extract(ing, "\\b[A-Z|a-z]+ing\\b") %>%
+  head()
+
+plurals <- str_subset(sentences, "\\b[A-Z|a-z]{3,}s\\b") 
+# we want the length to be at least 3 since words like "is" is not a plurals
+str_extract(plurals, "\\b[A-Z|a-z]{3,}s\\b") %>%
+  head()
+```
+
+### Grouped Matches
+
+*24. Find all words that come after a “number” like “one”, “two”, “three” etc. Pull out both the number and the word.*
+
+```{r}
+pattn <- "(one|two|three|four|five|six|seven|eight|nine|ten) +[^ .]+"
+numbs <- str_subset(sentences, pattn)
+str_extract(numbs, pattn)
+```
+
+### Replacing matches
+
+*25. Implement a simple version of str_to_lower() using replace_all().*
+
+```{r}
+my_str <- "abcDEFgh"
+str_replace_all(my_str, c("D" = "d", "E" = "e", "F" = "f"))
+```
+
+### Splitting
+
+*26. Split up a string like "apples, pears, and bananas" into individual components.*
+
+```{r}
+my_str <- "apples, pears, and bananas"
+str_split(my_str, ", and |, ")
+```
+
+### Other types of pattern
+
+*27. How would you find all strings containing \ with regex() vs. with fixed()?*
+
+- We need `\\\\` to represent a backslash in regex, but only need to specify `\\` (the regular sting backslash) if we use fixed.
+
+```{r}
+my_str <- c("abc", "a\\c", "de\\")
+str_view(my_str, regex("\\\\"))
+str_view(my_str, fixed("\\"))
+```
+
+### stringi
+
+*28. Find the stringi functions that: (1) Count the number of words. (2) Find duplicated strings. (3) Generate random text.*
+
+- Count the number of words: stri_count_words()
+- Find duplicated strings: stri_duplicated()
+- Generate random text: 
+     + stri_rand_lipsum() generates pseudo random text
+     + stri_rand_strings() generates random strings
+     + stri_rand_shuffle() generates random permutationf of strings
+
+
+# Part 2: Wrting functions
 
 Linear Regression:
 
@@ -278,3 +376,15 @@ qua_fit(gap_subset)
 ```
 
 Robust Regression:
+
+```{r}
+library(MASS)
+rm(list = ls())
+robust_fit <- function(dat, offset = 1952) {
+  fit <- rlm(gdpPercap ~ I(year - offset), dat)
+  setNames(coef(fit), c("intercept", "slope"))
+}
+
+robust_fit(gap_subset)
+```
+
