@@ -13,6 +13,7 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
 | [HW03](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw03) | Dplyr and ggplots |
 | [HW04](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw04) | Data reshaping and Joins |
 | [HW05](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw05) | Factor Exploration, Wrting Files and Visualization Design |
+| [HW06](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw06) | Regular Expressions, Wrting functions in R, Nested Data |
 
 ## Links
 
@@ -36,6 +37,10 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
     + Writing in and exporting files from R
     + Wrting figures
     + Visualization design
+- [hw06](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw06)
+    + Explore regular expressions
+    + Writing functions in R
+    + Work with nested data
 
 ## About me
 
