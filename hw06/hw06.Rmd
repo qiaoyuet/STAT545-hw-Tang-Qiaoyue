@@ -2,7 +2,9 @@
 title: "hw06"
 author: "Qiaoyue Tang"
 date: "2017/11/4"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 ```{r, include=FALSE}
@@ -77,12 +79,7 @@ str_sub(my_strs, floor((str_length(my_strs)+1)/2), ceiling((str_length(my_strs)+
 *4. What does str_wrap() do? When might you want to use it?*
 
 - `str_wrap` is used to formatting strings to certain width/indent etc. It would be useful when formatting long strings or paragraphs.
-- For example, it would be useful to change the very long labels to fit beter on a graph.
 
-```{r}
-my_str <- "This is a wrapper around stri_wrap which implements the Knuth-Plass paragraph wrapping algorithm."
-str_wrap(my_str, width = 20)
-```
 
 *5. What does str_trim() do? What’s the opposite of str_trim()?*
 
@@ -135,7 +132,7 @@ connect_str("a")
 
 ```{r}
 a <- c("abc","\"'\\","def")
-str_view(a, "\\\"'\\\\")
+str_subset(a, "\\\"'\\\\")
 ```
 
 *9. What patterns will the regular expression \..\..\.. match? How would you represent it as a string?*
@@ -377,6 +374,25 @@ robust_fit <- function(dat, offset = 1952) {
 }
 
 robust_fit(gap_subset)
+```
+
+Bisection Algorithm:
+
+- This is the function that I wrote for STAT560 homework. It is a useful algorithm to calculate maximum likelihood estimator:
+
+```{r}
+bisection <- function(f, a, b, n = 1000, epsilon = 0.0001) {
+
+  for (i in 1:n) {
+    c <- (a + b) / 2
+    if (((b - a) / 2) < epsilon) {
+      return(c)
+    }
+    ifelse(sign(f(c)) == sign(f(a)),
+           a <- c,
+           b <- c)
+  }
+}
 ```
 
 
