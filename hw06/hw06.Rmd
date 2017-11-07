@@ -2,8 +2,7 @@
 title: "hw06"
 author: "Qiaoyue Tang"
 date: "2017/11/4"
-output: github_document
-always_allow_html: yes
+output: html_document
 ---
 
 ```{r, include=FALSE}
