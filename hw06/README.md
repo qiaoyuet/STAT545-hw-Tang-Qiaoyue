@@ -8,9 +8,9 @@ This homework investigates character data, including using regular expressions; 
 
 Since in Part 1 of this homework I used `str_view()` to see the matches of strings and it is a html widget that cannot be displayed in github properly. Try the following to view it:
 
-(1) Go to the [homepage](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue)
-(2) Click up-right corner "Clone or Download" and click "Download Zip"
-(3) After download and unzip, click on the folder of hw06, find the hw06.html and you can view it now!
+- (1) Go to the [homepage](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue)
+- (2) Click up-right corner "Clone or Download" and click "Download Zip"
+- (3) After download and unzip, click on the folder of hw06, find the hw06.html and you can view it now!
 
 ## Links to homework submissions
 
