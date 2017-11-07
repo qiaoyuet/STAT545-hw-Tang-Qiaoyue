@@ -2,7 +2,7 @@
 
 ## Description
 
-
+This homework investigates character data, including using regular expressions; writing functions in R and also some code with nested data frame.
 
 ## Links to homework submissions
 

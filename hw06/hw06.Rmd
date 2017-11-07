@@ -2,7 +2,9 @@
 title: "hw06"
 author: "Qiaoyue Tang"
 date: "2017/11/4"
-output: github_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 ```{r, include=FALSE}
@@ -259,15 +261,10 @@ str_view(words, "(.).*\\1.*\\1", match = T)
 
 ```{r}
 vowels <- str_count(words, "[aeiou]")
-length <- str_length(words)
-data.frame(words = words, num_of_vowels = vowels, length = length) %>% 
-  arrange(desc(counts)) %>% 
-  head()
+words[which(vowels == max(vowels))]
 
-data.frame(words = words, num_of_vowels = vowels, length = length) %>% 
-  mutate(proportion = vowels/lengths) %>% 
-  arrange(desc(proportion)) %>% 
-  head()
+prop <- str_count(words, "[aeiou]") / str_length(words)
+words[which(prop == max(prop))]
 ```
 
 - We can see the words with the most vowels are listed below (there are ties), the maximum number of vowels in a word is 5.
@@ -366,7 +363,6 @@ ggplot(gap_subset, aes(x=year, y=gdpPercap)) + geom_point() + geom_smooth(method
 Quadratic Regression:
 
 ```{r}
-rm(list = ls())
 qua_fit <- function(dat, offset = 1952) {
   fit <- lm(gdpPercap ~ I(year - offset) + I((year - offset)^2), dat)
   setNames(coef(fit), c("intercept", "coef_linear", "coef_quadratic"))
@@ -379,7 +375,6 @@ Robust Regression:
 
 ```{r}
 library(MASS)
-rm(list = ls())
 robust_fit <- function(dat, offset = 1952) {
   fit <- rlm(gdpPercap ~ I(year - offset), dat)
   setNames(coef(fit), c("intercept", "slope"))
@@ -449,10 +444,9 @@ gap_nested <- gap_nested %>%
 Then we can delete the redundant information about data and fit and only keep the information after `tidy()`:
 
 ```{r}
-gap_coefs <- gap_nested %>% 
-   select(continent, country, tidy) %>% 
+gap_coefs <- gap_nested %>%
+   dplyr::select(continent, country, tidy) %>%
    unnest(tidy)
-
 gap_coefs
 ```
 
