@@ -369,7 +369,7 @@ Quadratic Regression:
 rm(list = ls())
 qua_fit <- function(dat, offset = 1952) {
   fit <- lm(gdpPercap ~ I(year - offset) + I((year - offset)^2), dat)
-  setNames(coef(fit), c("intercept", "coef_quadratic", "slope"))
+  setNames(coef(fit), c("intercept", "coef_linear", "coef_quadratic"))
 }
 
 qua_fit(gap_subset)
@@ -387,4 +387,105 @@ robust_fit <- function(dat, offset = 1952) {
 
 robust_fit(gap_subset)
 ```
+
+Maximizing a normal likelihood function:
+
+
+# Part 3: Work with a nested data frame
+
+### Nesting
+
+```{r}
+gap_nested <- gapminder %>% 
+   group_by(continent, country) %>% 
+   nest()
+gap_nested
+```
+
+This nesting dataframe creates a row for each country with its corresponding continent and attaches a  list named data for each row.
+
+```{r}
+gap_nested$data[[1]]
+```
+
+We can see that the list (take the first element as an example) contains all information that orignally in gapminder for country Afghanistan. 
+
+### Fit a model of life expectancy against year
+
+We create a model to fit quadratic regression of life expectancies vs. year and test it on Afghanistan first: 
+
+```{r}
+my_fit <- function(df, offset = 1952) {
+  lm(lifeExp ~ I(year - offset) + I((year - offset)^2), data = df)
+}
+
+my_fit(gap_nested$data[[1]])
+```
+
+Next we want to generalize it to all countries in the nested dataframe:
+
+```{r}
+gap_nested <- gap_nested %>% 
+   mutate(fit = map(data, my_fit))
+gap_nested
+```
+
+### Get information out of your linear models
+
+Using the broom package, we can use `tidy()` to extract information such as estimates and se in a lm fit: 
+
+```{r}
+library(broom)
+tidy(gap_nested$fit[[1]])
+```
+
+Applying it to the whole dataset by mapping the variables after `tidy()` to each fit. We want to use map here to correctly match the write information to the right fit:
+
+```{r}
+gap_nested <- gap_nested %>% 
+  mutate(tidy = map(fit, tidy))
+```
+
+Then we can delete the redundant information about data and fit and only keep the information after `tidy()`:
+
+```{r}
+gap_coefs <- gap_nested %>% 
+   select(continent, country, tidy) %>% 
+   unnest(tidy)
+
+gap_coefs
+```
+
+The level names inside term is a bit hard to understand. Using the functions in hw05, we can rename the levels:
+
+```{r}
+library(forcats)
+gap_coefs %>% 
+  mutate(term = fct_recode(term, "Intercept" = "(Intercept)",
+                               "coef_linear" = "I(year - offset)",
+                               "coef_quadratic" = "I((year - offset)^2)")) %>% 
+  droplevels()
+```
+
+### Testing whether the coefficients are significant (graphically)
+
+A convinient way to test whether the coefficient is significant is to see whether the 95% CI of the estimated coefficient contains 0 or not. To do so, we can draw the confidence interval for each coefficients for a few countries (can be applied to all/other countries).
+
+From the graph we can roughly see that quadratic terms seem to be useless since almost all countries have its 95% CI acorss 0, indicating we can probably remove the quadratic term to be more efficient. The linear term is also not very significant for certain countries such as Rwanda.
+
+```{r}
+gap_coefs %>% 
+  mutate(term = fct_recode(term, "Intercept" = "(Intercept)",
+                               "coef_linear" = "I(year - offset)",
+                               "coef_quadratic" = "I((year - offset)^2)")) %>% 
+  droplevels() %>% 
+  filter(country %in% c("China","Canada","Afghanistan","Greece","Rwanda")) %>% 
+  ggplot(aes(x=term, y=estimate, color = country)) + 
+  geom_point() + 
+  geom_errorbar(aes(ymin=estimate-(1.96)*std.error, ymax=estimate+(1.96)*std.error, colour=country), width=.3) +
+  geom_hline(aes(yintercept = 0), colour="red", linetype="dashed") +
+  ggtitle("Testing Significance of Coefficients") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
 

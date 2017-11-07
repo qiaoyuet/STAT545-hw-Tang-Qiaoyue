@@ -18,3 +18,5 @@
 - didn't understand Q13,18, 20(2)(4), 21
 - 26: ", and |, " is different from ", |, and "
 - Writing functions: not able to plot reg. line using function output, plot quadratic functions
+- rlm' failed to converge in 20 steps
+- navigation
