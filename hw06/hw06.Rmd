@@ -2,9 +2,8 @@
 title: "hw06"
 author: "Qiaoyue Tang"
 date: "2017/11/4"
-output: 
-  html_document: 
-    keep_md: yes
+output: github_document
+always_allow_html: yes
 ---
 
 ```{r, include=FALSE}
@@ -356,8 +355,6 @@ gap_subset <- gapminder %>%
   filter(country %in% c("China"))
 
 lin_fit(gap_subset)
-
-ggplot(gap_subset, aes(x=year, y=gdpPercap)) + geom_point() + geom_smooth(method = "lm", se = F)
 ```
 
 Quadratic Regression:
@@ -382,8 +379,6 @@ robust_fit <- function(dat, offset = 1952) {
 
 robust_fit(gap_subset)
 ```
-
-Maximizing a normal likelihood function:
 
 
 # Part 3: Work with a nested data frame
