@@ -6,12 +6,10 @@ library(dplyr)
 library(forcats)
 
 # Import the data created in the first script.
-gapminder2 <- read.delim("gapminder2.tsv")
+gapminder2 <- readRDS("gapminder2.tsv")
 
 # Make sure your new continent order is still in force.
-old_levels2 <- levels(gapminder2$continent)
-new_levels2 <- fct_reorder(gapminder2$continent, gapminder2$lifeExp, fun = max, desc = F) %>% 
-  levels()
+(levels(gapminder2$continent))
 
 # Fit a linear regression of life expectancy on year within selected countries. 
 model.k <- lm(lifeExp~year, data = gapminder2, subset = (country == "Korea, Rep."))
