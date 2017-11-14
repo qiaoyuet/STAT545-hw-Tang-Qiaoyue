@@ -3,11 +3,11 @@
 ## Description
 In this homework I mainly practised how to use make to automate data analysis pipelines. There are 5 main steps in this homework:
 
-Download gapminder dataset from github
-Clean the original dataset and write a new one for analysis later
-Perform some analysis using the new dataset
-Generate some figures to help visualization
-Create a makefile to automate the analysis
+- Download gapminder dataset from github
+- Clean the original dataset and write a new one for analysis later
+- Perform some analysis using the new dataset
+- Generate some figures to help visualization
+- Create a makefile to automate the analysis
 
 ## Links to homework submissions
 ### IMPORTANT: This homework is in a new repository since it needs makefile. Please check out the below link.

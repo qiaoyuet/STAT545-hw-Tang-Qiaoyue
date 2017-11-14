@@ -14,6 +14,7 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
 | [HW04](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw04) | Data reshaping and Joins |
 | [HW05](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw05) | Factor Exploration, Wrting Files and Visualization Design |
 | [HW06](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw06) | Regular Expressions, Wrting functions in R, Nested Data |
+| [HW07](https://github.com/qiaoyuet/STAT545-hw07-Tang-Qiaoyue) | Automate Data Analysis Pipeline with Makefile |
 
 ## Links
 
@@ -41,6 +42,8 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
     + Explore regular expressions
     + Writing functions in R
     + Work with nested data
+- [hw07](https://github.com/qiaoyuet/STAT545-hw07-Tang-Qiaoyue)
+    + Automate Data Analysis Pipeline using Makefile
 
 ## About me
 
