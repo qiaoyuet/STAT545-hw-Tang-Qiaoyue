@@ -2,7 +2,7 @@
 title: "hw07_report"
 author: "Qiaoyue Tang"
 date: "2017/11/13"
-output: html_document
+output: github_document
 ---
 
 ```{r, include=FALSE}
@@ -102,7 +102,7 @@ model.m <- lm(lifeExp~year, data = gapminder2, subset = (country == "Mexico"))
 df5 <- tidy(model.m)
 
 result <- read.delim("lm_info.tsv")
-result
+knitr::kable(result)
 ```
 
 We also select the "best" country in terms of the longest life expectancies for each continent, and the result is shown below.
