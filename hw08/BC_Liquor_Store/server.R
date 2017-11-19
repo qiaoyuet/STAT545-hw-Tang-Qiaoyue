@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
+library(DT)
 
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
@@ -43,7 +44,7 @@ server <- function(input, output) {
       geom_histogram()
   })
 
-  output$results <- renderTable({
+  output$results <- DT::renderDataTable({
     filtered()
   })
 }

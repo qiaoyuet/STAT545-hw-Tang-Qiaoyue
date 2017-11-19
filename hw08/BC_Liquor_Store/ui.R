@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
+library(DT)
 
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
@@ -19,7 +20,7 @@ ui <- fluidPage(
     mainPanel(
       plotOutput("coolplot"),
       br(), br(),
-      tableOutput("results")
+      DT::dataTableOutput("results")
     )
   )
 )
