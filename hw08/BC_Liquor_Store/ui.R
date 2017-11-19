@@ -1,3 +1,7 @@
+library(shiny)
+library(ggplot2)
+library(dplyr)
+
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
 ui <- fluidPage(
@@ -8,7 +12,8 @@ ui <- fluidPage(
       radioButtons("typeInput", "Product type",
                    choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
                    selected = "WINE"),
-      uiOutput("countryOutput")
+      uiOutput("countryOutput"),
+      checkboxInput("ArrangePrice", "Sort Price?", TRUE)
     ),
     mainPanel(
       plotOutput("coolplot"),
