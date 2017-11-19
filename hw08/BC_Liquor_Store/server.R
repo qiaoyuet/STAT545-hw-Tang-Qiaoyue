@@ -40,11 +40,17 @@ server <- function(input, output) {
     if (is.null(filtered())) {
       return()
     }
+    if(nrow(filtered()) == 0) {
+      return(NULL)
+    }
     ggplot(filtered(), aes(Alcohol_Content)) +
       geom_histogram()
   })
 
   output$results <- DT::renderDataTable({
+    if(nrow(filtered()) == 0) {
+      return(NULL)
+    }
     filtered()
   })
 }
