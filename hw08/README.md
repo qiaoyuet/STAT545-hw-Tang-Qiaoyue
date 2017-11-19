@@ -2,7 +2,9 @@
 
 ## Description
 I added the following features to the original BC Liquor Store App:
-- Add an option to sort the results table by price
+- Add an option to sort the results table by price.
+- Add an image of the BC Liquor Store to the UI.
+
 
 ## Links
 
@@ -12,3 +14,4 @@ I added the following features to the original BC Liquor Store App:
 
 ## Report process
 - change to 2 file shiny without app.r?
+- how to resize logo image/change location shown on ui?

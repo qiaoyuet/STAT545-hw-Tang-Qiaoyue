@@ -5,6 +5,7 @@ library(dplyr)
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
 ui <- fluidPage(
+  img(src = "logo.png"),
   titlePanel("BC Liquor Store prices"),
   sidebarLayout(
     sidebarPanel(
