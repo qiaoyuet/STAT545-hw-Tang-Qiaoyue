@@ -7,10 +7,10 @@ library(shinyjs)
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
 ui <- fluidPage(
-  img(src = "logo.png", width = "50%"),
   titlePanel("BC Liquor Store prices"),
   sidebarLayout(
     sidebarPanel(
+      img(src = "logo.png", width = "100%"),
       sliderInput("priceInput", "Price", 0, 100, c(25, 40), pre = "$"),
       radioButtons("typeInput", "Product type",
                    choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
