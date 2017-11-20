@@ -7,7 +7,7 @@ library(shinyjs)
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
 ui <- fluidPage(
-  img(src = "logo.png"),
+  img(src = "logo.png", width = "50%"),
   titlePanel("BC Liquor Store prices"),
   sidebarLayout(
     sidebarPanel(
@@ -20,9 +20,10 @@ ui <- fluidPage(
       shinyjs::colourInput("col", "Select your colour for histogram", "violetred4")
     ),
     mainPanel(
-      plotOutput("coolplot"),
-      br(), br(),
-      DT::dataTableOutput("results")
+      tabsetPanel(
+        tabPanel("Histogram", plotOutput("Histogram")),
+        tabPanel("Results", DT::dataTableOutput("Results"))
+      )
     )
   )
 )

@@ -37,7 +37,7 @@ server <- function(input, output) {
 
   })
 
-  output$coolplot <- renderPlot({
+  output$Histogram <- renderPlot({
     if (is.null(filtered())) {
       return()
     }
@@ -48,7 +48,7 @@ server <- function(input, output) {
       geom_histogram(fill = input$col)
   })
 
-  output$results <- DT::renderDataTable({
+  output$Results <- DT::renderDataTable({
     if(nrow(filtered()) == 0) {
       return(NULL)
     }
