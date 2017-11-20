@@ -8,6 +8,9 @@ I used the [dataset from BC liquor store](https://github.com/qiaoyuet/STAT545-hw
 - Add parameters to the plot.
 - The app currently behaves strangely when the user selects filters that return 0 results. For example, try searching for wines from Belgium. There will be an empty plot and empty table generated, and there will be a warning message in the R console. Try to figure out why this warning message is appearing, and how to fix it.
 - Place the plot and the table in separate tabs.
+- Show the number of results found whenever the filters change.
+- Allow the user to download the results table as a ..csv file.
+- Provide a way for the user to show results from all countries (instead of forcing a filter by only one specific country).
 
 ## Links
 

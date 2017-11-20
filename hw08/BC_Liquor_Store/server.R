@@ -17,24 +17,31 @@ server <- function(input, output) {
     if (is.null(input$countryInput)) {
       return(NULL)
     }
-
-    if (input$ArrangePrice == TRUE) {
-      bcl %>%
-        filter(Price >= input$priceInput[1],
-               Price <= input$priceInput[2],
-               Type == input$typeInput,
-               Country == input$countryInput
-        ) %>%
-        arrange(desc(Price))
+    
+    if(input$filterCountry) {
+      if (input$ArrangePrice == TRUE) {
+        bcl %>%
+          filter(Price >= input$priceInput[1],
+                 Price <= input$priceInput[2],
+                 Type == input$typeInput,
+                 Country == input$countryInput
+          ) %>%
+          arrange(desc(Price))
+      } else {
+        bcl %>%
+          filter(Price >= input$priceInput[1],
+                 Price <= input$priceInput[2],
+                 Type == input$typeInput,
+                 Country == input$countryInput
+          )
+      }
     } else {
-      bcl %>%
+      bcl %>% 
         filter(Price >= input$priceInput[1],
                Price <= input$priceInput[2],
                Type == input$typeInput,
-               Country == input$countryInput
         )
     }
-
   })
 
   output$Histogram <- renderPlot({
@@ -54,4 +61,22 @@ server <- function(input, output) {
     }
     filtered()
   })
+  
+  output$summaryText <- renderText({
+    opt <- nrow(filtered())
+    if (is.null(opt)) {
+      opt <- 0
+    }
+    paste0("We've found ", opt, " options for you!")
+  })
+  
+  output$download <- downloadHandler(
+    filename = function() {
+      "results.csv"
+    },
+    content = function(content) {
+      write.csv(filtered(), content)
+    }
+  )
+  
 }
