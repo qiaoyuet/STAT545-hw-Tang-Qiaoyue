@@ -11,7 +11,7 @@ I added the following features to the original BC Liquor Store App:
 
 ## Links
 
-[]()
+[Link to BC Liquor Store App](https://qiaoyuet.shinyapps.io/bc_liquor_store/)
 
 [Return to main homework directory](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue)
 
