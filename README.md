@@ -15,6 +15,7 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
 | [HW05](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw05) | Factor Exploration, Wrting Files and Visualization Design |
 | [HW06](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw06) | Regular Expressions, Wrting functions in R, Nested Data |
 | [HW07](https://github.com/qiaoyuet/STAT545-hw07-Tang-Qiaoyue) | Automate Data Analysis Pipeline with Makefile |
+| [HW08](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw08) | Building shiny app: BC Liquor Store Prices |
 
 ## Links
 
@@ -44,6 +45,10 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
     + Work with nested data
 - [hw07](https://github.com/qiaoyuet/STAT545-hw07-Tang-Qiaoyue)
     + Automate Data Analysis Pipeline using Makefile
+- [hw08](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw08)
+    + Add changes to the BC Liquor Store Prices app built in class
+    + Use libearies such as DT and shinyjs
+    + Deploy app online through shinyapp.io
 
 ## About me
 
