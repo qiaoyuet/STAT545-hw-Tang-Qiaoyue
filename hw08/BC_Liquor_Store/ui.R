@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(DT)
+library(shinyjs)
 
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
@@ -15,7 +16,8 @@ ui <- fluidPage(
                    choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
                    selected = "WINE"),
       uiOutput("countryOutput"),
-      checkboxInput("ArrangePrice", "Sort Price?", TRUE)
+      checkboxInput("ArrangePrice", "Sort Price?", TRUE),
+      shinyjs::colourInput("col", "Select your colour for histogram", "violetred4")
     ),
     mainPanel(
       plotOutput("coolplot"),

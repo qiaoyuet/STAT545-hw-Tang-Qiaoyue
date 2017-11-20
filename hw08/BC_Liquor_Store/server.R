@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(DT)
+library(shinyjs)
 
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
@@ -44,7 +45,7 @@ server <- function(input, output) {
       return(NULL)
     }
     ggplot(filtered(), aes(Alcohol_Content)) +
-      geom_histogram()
+      geom_histogram(fill = input$col)
   })
 
   output$results <- DT::renderDataTable({
