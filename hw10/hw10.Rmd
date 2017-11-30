@@ -1,0 +1,92 @@
+---
+title: "hw10"
+author: "Qiaoyue Tang"
+date: "November 29, 2017"
+output: github_document
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(magrittr)
+library(purrr)
+library(glue)
+library(stringr)
+library(rvest)
+library(xml2)
+```
+
+
+```{r}
+my_url <- "https://www.billboard.com/charts/greatest-billboard-200-albums#"
+page_title <- read_html(my_url)
+
+get_album <- function(my_link) {
+  my_link %>% 
+    read_html() %>% 
+    html_nodes(css = ".chart-row__song") %>% 
+    html_text() %>% 
+    return()
+}
+
+get_artist <- function(my_link) {
+  my_link %>% 
+    read_html() %>% 
+    html_nodes(css = ".chart-row__artist") %>% 
+    html_text() %>%
+    str_trim(side = "both") %>% 
+    return()
+}
+
+get_rank <- function(my_link) {
+  my_link %>% 
+    read_html() %>% 
+    html_nodes(css = ".chart-row__current-week") %>% 
+    html_text() %>% 
+    return()
+}
+
+Album <- get_album(my_url)
+Artist <- get_artist(my_url)
+Rank <- get_rank(my_url)
+
+df <- data_frame(Rank = Rank,
+                 Album = Album,
+                 Artist = Artist,
+                 Link = glue("https://www.billboard.com/music/{Artist}") %>% 
+                   str_to_lower() %>% 
+                   str_replace_all(" ","-"))
+
+df$Link[5] <- NA
+df$Link[13] <- NA
+df$Link[137] <- NA
+df$Link[170] <- NA
+df$Link[171] <- NA
+df$Link[197] <- NA
+df$Link[24] <- "https://www.billboard.com/music/mc-hammer"
+df$Link[30] <- "https://www.billboard.com/music/hootie-the-blowfish"
+
+df$Link[4]
+get_stats <- function(link) {
+  link %>% 
+    read_html() %>% 
+    html_nodes(css = ".artist-section--chart-history__stats__stat--number") %>% 
+    html_text() %>% 
+    return()
+}
+get_stats(df$Link[4])[1] # No.1 Hits
+get_stats(df$Link[4])[2] # Top 10 Hits
+
+
+#test <- c(df$Link[1],df$Link[2],df$Link[3],df$Link[4])
+itr = 0
+for (i in df$Link) {
+  itr <- itr+1
+  print(itr)
+  if (is.na(i)) {
+    print(NA)
+  } else {
+    print(get_stats(i))
+  }
+}
+
+```
