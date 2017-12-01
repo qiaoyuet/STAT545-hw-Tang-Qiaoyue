@@ -1,0 +1,201 @@
+Rank,Album,Artist,Link,No_1_hits,Top_10_hits,Songs
+1,21,Adele,https://www.billboard.com/music/adele,4.0,6.0,13.0
+2,The Sound Of Music,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+3,Thriller,Michael Jackson,https://www.billboard.com/music/michael-jackson,13.0,29.0,50.0
+4,Fearless,Taylor Swift,https://www.billboard.com/music/taylor-swift,5.0,22.0,75.0
+5,Born In The U.S.A.,Bruce Springsteen,https://www.billboard.com/music/bruce-springsteen,NA,NA,NA
+6,Ropin' The Wind,Garth Brooks,https://www.billboard.com/music/garth-brooks,1.0,8.0,NA
+7,Jagged Little Pill,Alanis Morissette,https://www.billboard.com/music/alanis-morissette,2.0,6.0,NA
+8,Doctor Zhivago,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+9,All The Right Reasons,Nickelback,https://www.billboard.com/music/nickelback,1.0,6.0,19.0
+10,Tapestry,Carole King,https://www.billboard.com/music/carole-king,1.0,4.0,15.0
+11,Whitney Houston,Whitney Houston,https://www.billboard.com/music/whitney-houston,11.0,23.0,39.0
+12,The Fame,Lady Gaga,https://www.billboard.com/music/lady-gaga,3.0,14.0,26.0
+13,Whipped Cream & Other Delights,Herb Alpert's Tijuana Brass,https://www.billboard.com/music/herb-alperts-tijuana-brass,NA,NA,NA
+14,Come On Over,Shania Twain,https://www.billboard.com/music/shania-twain,3.0,18.0,NA
+15,Rumours,Fleetwood Mac,https://www.billboard.com/music/fleetwood-mac,1.0,9.0,25.0
+16,Confessions,Usher,https://www.billboard.com/music/usher,9.0,18.0,50.0
+17,Frozen,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+18,Taylor Swift,Taylor Swift,https://www.billboard.com/music/taylor-swift,5.0,22.0,75.0
+19,Forever Your Girl,Paula Abdul,https://www.billboard.com/music/paula-abdul,6.0,8.0,15.0
+20,Some Gave All,Billy Ray Cyrus,https://www.billboard.com/music/billy-ray-cyrus,1.0,10.0,NA
+21,Falling Into You,Celine Dion,https://www.billboard.com/music/celine-dion,4.0,10.0,21.0
+22,Some Hearts,Carrie Underwood,https://www.billboard.com/music/carrie-underwood,1.0,4.0,32.0
+23,The Bodyguard,Whitney Houston,https://www.billboard.com/music/whitney-houston,11.0,23.0,39.0
+24,Please Hammer Don't Hurt 'Em,M.C. Hammer,https://www.billboard.com/music/m.c.-hammer,5.0,10.0,NA
+25,Hysteria,Def Leppard,https://www.billboard.com/music/def-leppard,1.0,4.0,19.0
+26,Come Away With Me,Norah Jones,https://www.billboard.com/music/norah-jones,2.0,NA,NA
+27,Daughtry,Daughtry,https://www.billboard.com/music/daughtry,2.0,12.0,NA
+28,[Hybrid Theory],Linkin Park,https://www.billboard.com/music/linkin-park,3.0,23.0,NA
+29,No Fences,Garth Brooks,https://www.billboard.com/music/garth-brooks,1.0,8.0,NA
+30,Cracked Rear View,Hootie & The Blowfish,https://www.billboard.com/music/hootie-the-blowfish,3.0,6.0,NA
+31,The Dark Side Of The Moon,Pink Floyd,https://www.billboard.com/music/pink-floyd,1.0,1.0,5.0
+32,Fallen,Evanescence,https://www.billboard.com/music/evanescence,3.0,5.0,NA
+33,Slippery When Wet,Bon Jovi,https://www.billboard.com/music/bon-jovi,4.0,10.0,25.0
+34,Human Clay,Creed,https://www.billboard.com/music/creed,1.0,4.0,7.0
+35,Mary Poppins,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+36,Supernatural,Santana,https://www.billboard.com/music/santana,2.0,6.0,24.0
+37,Night Visions,Imagine Dragons,https://www.billboard.com/music/imagine-dragons,4.0,12.0,NA
+38,Frampton Comes Alive,Peter Frampton,https://www.billboard.com/music/peter-frampton,3.0,8.0,NA
+39,Goodbye Yellow Brick Road,Elton John,https://www.billboard.com/music/elton-john,9.0,27.0,67.0
+40,Metallica,Metallica,https://www.billboard.com/music/metallica,1.0,16.0,NA
+41,...Baby One More Time,Britney Spears,https://www.billboard.com/music/britney-spears,5.0,13.0,35.0
+42,Backstreet Boys,Backstreet Boys,https://www.billboard.com/music/backstreet-boys,6.0,17.0,NA
+43,Saturday Night Fever,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+44,Going Places,Michael Henderson,https://www.billboard.com/music/michael-henderson,1.0,NA,NA
+45,Ten,Pearl Jam,https://www.billboard.com/music/pearl-jam,2.0,14.0,NA
+46,4,Foreigner,https://www.billboard.com/music/foreigner,1.0,9.0,22.0
+47,Escape,Journey,https://www.billboard.com/music/journey,6.0,25.0,NA
+48,Can't Slow Down,Lionel Richie,https://www.billboard.com/music/lionel-richie,5.0,13.0,20.0
+49,Spice,Spice Girls,https://www.billboard.com/music/spice-girls,1.0,4.0,8.0
+50,Mariah Carey,Mariah Carey,https://www.billboard.com/music/mariah-carey,18.0,27.0,48.0
+51,High School Musical,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+52,The Emancipation Of Mimi,Mariah Carey,https://www.billboard.com/music/mariah-carey,18.0,27.0,48.0
+53,"Blood, Sweat & Tears","Blood, Sweat & Tears",https://www.billboard.com/music/blood-sweat-tears,3.0,10.0,NA
+54,Sgt. Pepper's Lonely Hearts Club Band,The Beatles,https://www.billboard.com/music/the-beatles,20.0,34.0,71.0
+55,Unorthodox Jukebox,Bruno Mars,https://www.billboard.com/music/bruno-mars,7.0,14.0,21.0
+56,The Eminem Show,Eminem,https://www.billboard.com/music/eminem,5.0,17.0,57.0
+57,"Time, Love And Tenderness",Michael Bolton,https://www.billboard.com/music/michael-bolton,2.0,7.0,19.0
+58,Let Go,Avril Lavigne,https://www.billboard.com/music/avril-lavigne,1.0,5.0,19.0
+59,Jesus Christ Superstar,Various Artists,https://www.billboard.com/music/various-artists,4.0,NA,NA
+60,Dirty Dancing,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+61,II,Boyz II Men,https://www.billboard.com/music/boyz-ii-men,5.0,10.0,18.0
+62,In-A-Gadda-Da-Vida,Iron Butterfly,https://www.billboard.com/music/iron-butterfly,4.0,NA,NA
+63,Rock N Roll Jesus,Kid Rock,https://www.billboard.com/music/kid-rock,1.0,6.0,NA
+64,1989,Taylor Swift,https://www.billboard.com/music/taylor-swift,5.0,22.0,75.0
+65,Appetite For Destruction,Guns N' Roses,https://www.billboard.com/music/guns-n-roses,1.0,6.0,13.0
+66,Hi Infidelity,REO Speedwagon,https://www.billboard.com/music/reo-speedwagon,2.0,4.0,18.0
+67,Tragic Kingdom,No Doubt,https://www.billboard.com/music/no-doubt,3.0,8.0,NA
+68,Need You Now,Lady Antebellum,https://www.billboard.com/music/lady-antebellum,2.0,18.0,NA
+69,Breakfast In America,Supertramp,https://www.billboard.com/music/supertramp,2.0,10.0,NA
+70,Millennium,Backstreet Boys,https://www.billboard.com/music/backstreet-boys,6.0,17.0,NA
+71,Hannah Montana 2 (Soundtrack)/Meet Miley Cyrus,Miley Cyrus,https://www.billboard.com/music/miley-cyrus,1.0,9.0,45.0
+72,Control,Janet Jackson,https://www.billboard.com/music/janet-jackson,10.0,27.0,40.0
+73,American Idiot,Green Day,https://www.billboard.com/music/green-day,2.0,9.0,NA
+74,Fleetwood Mac,Fleetwood Mac,https://www.billboard.com/music/fleetwood-mac,1.0,9.0,25.0
+75,Girl You Know It's True,Milli Vanilli,https://www.billboard.com/music/milli-vanilli,3.0,5.0,5.0
+76,Here's To The Good Times,Florida Georgia Line,https://www.billboard.com/music/florida-georgia-line,1.0,17.0,NA
+77,Breakaway,Kelly Clarkson,https://www.billboard.com/music/kelly-clarkson,3.0,11.0,27.0
+78,My World 2.0,Justin Bieber,https://www.billboard.com/music/justin-bieber,5.0,13.0,69.0
+79,Unplugged,Eric Clapton,https://www.billboard.com/music/eric-clapton,1.0,6.0,23.0
+80,The Lion King,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+81,Faith,George Michael,https://www.billboard.com/music/george-michael,8.0,16.0,20.0
+82,Don't Be Cruel,Bobby Brown,https://www.billboard.com/music/bobby-brown,2.0,9.0,13.0
+83,Hotshot,Shaggy,https://www.billboard.com/music/shaggy,2.0,3.0,8.0
+84,Wilson Phillips,Wilson Phillips,https://www.billboard.com/music/wilson-phillips,3.0,4.0,7.0
+85,Country Grammar,Nelly,https://www.billboard.com/music/nelly,4.0,14.0,36.0
+86,John Denver's Greatest Hits,John Denver,https://www.billboard.com/music/john-denver,4.0,7.0,32.0
+87,Music Box,Mariah Carey,https://www.billboard.com/music/mariah-carey,18.0,27.0,48.0
+88,Hangin' Tough,New Kids On The Block,https://www.billboard.com/music/new-kids-on-the-block,3.0,9.0,13.0
+89,Chicago II,Chicago,https://www.billboard.com/music/chicago,3.0,20.0,46.0
+90,"Hello, Dolly!",Original Cast,https://www.billboard.com/music/original-cast,1.0,2.0,75.0
+91,The Sign,Ace Of Base,https://www.billboard.com/music/ace-of-base,1.0,4.0,8.0
+92,The Wall,Pink Floyd,https://www.billboard.com/music/pink-floyd,1.0,1.0,5.0
+93,Recovery,Eminem,https://www.billboard.com/music/eminem,5.0,17.0,57.0
+94,Janet Jackson's Rhythm Nation 1814,Janet Jackson,https://www.billboard.com/music/janet-jackson,10.0,27.0,40.0
+95,Asia,Asia,https://www.billboard.com/music/asia,2.0,6.0,NA
+96,The E.N.D.,The Black Eyed Peas,https://www.billboard.com/music/the-black-eyed-peas,3.0,10.0,16.0
+97,Futuresex/Lovesounds,Justin Timberlake,https://www.billboard.com/music/justin-timberlake,5.0,17.0,29.0
+98,Brothers In Arms,Dire Straits,https://www.billboard.com/music/dire-straits,1.0,3.0,7.0
+99,In The Lonely Hour,Sam Smith,https://www.billboard.com/music/sam-smith,5.0,12.0,NA
+100,The Dutchess,Fergie,https://www.billboard.com/music/fergie,3.0,5.0,11.0
+101,"O Brother, Where Art Thou?",Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+102,Business As Usual,Men At Work,https://www.billboard.com/music/men-at-work,2.0,4.0,6.0
+103,The Graduate,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+104,Me And My Gang,Rascal Flatts,https://www.billboard.com/music/rascal-flatts,2.0,36.0,NA
+105,A Hard Day's Night (Soundtrack),The Beatles,https://www.billboard.com/music/the-beatles,20.0,34.0,71.0
+106,Sigh No More,Mumford & Sons,https://www.billboard.com/music/mumford-sons,11.0,NA,NA
+107,Songs In A Minor,Alicia Keys,https://www.billboard.com/music/alicia-keys,4.0,9.0,24.0
+108,Heart,Heart,https://www.billboard.com/music/heart,2.0,9.0,29.0
+109,Crash My Party,Luke Bryan,https://www.billboard.com/music/luke-bryan,26.0,NA,NA
+110,Purple Rain (Soundtrack),Prince And The Revolution,https://www.billboard.com/music/prince-and-the-revolution,NA,NA,NA
+111,No Strings Attached,'N Sync,https://www.billboard.com/music/n-sync,1.0,6.0,12.0
+112,Speakerboxxx/The Love Below,OutKast,https://www.billboard.com/music/outkast,3.0,4.0,19.0
+113,X,Ed Sheeran,https://www.billboard.com/music/ed-sheeran,1.0,6.0,28.0
+114,Abraxas,Santana,https://www.billboard.com/music/santana,2.0,6.0,24.0
+115,Songs In The Key Of Life,Stevie Wonder,https://www.billboard.com/music/stevie-wonder,10.0,28.0,63.0
+116,Babel,Mumford & Sons,https://www.billboard.com/music/mumford-sons,11.0,NA,NA
+117,Breathless,Kenny G,https://www.billboard.com/music/kenny-g,2.0,11.0,NA
+118,Nevermind,Nirvana,https://www.billboard.com/music/nirvana,1.0,4.0,NA
+119,Janet.,Janet Jackson,https://www.billboard.com/music/janet-jackson,10.0,27.0,40.0
+120,Band On The Run,Paul McCartney And Wings,https://www.billboard.com/music/paul-mccartney-and-wings,1.0,1.0,1.0
+121,Are You Experienced?,Jimi Hendrix,https://www.billboard.com/music/jimi-hendrix,7.0,NA,NA
+122,Sports,Huey Lewis & The News,https://www.billboard.com/music/huey-lewis-the-news,3.0,12.0,21.0
+123,Hair,Original Cast Recording,https://www.billboard.com/music/original-cast-recording,NA,NA,NA
+124,Synchronicity,The Police,https://www.billboard.com/music/the-police,1.0,6.0,13.0
+125,Pieces Of You,Jewel,https://www.billboard.com/music/jewel,2.0,8.0,NA
+126,Crazysexycool,TLC,https://www.billboard.com/music/tlc,4.0,9.0,16.0
+127,The Joshua Tree,U2,https://www.billboard.com/music/u2,2.0,6.0,34.0
+128,As I Am,Alicia Keys,https://www.billboard.com/music/alicia-keys,4.0,9.0,24.0
+129,Cooleyhighharmony,Boyz II Men,https://www.billboard.com/music/boyz-ii-men,5.0,10.0,18.0
+130,No Jacket Required,Phil Collins,https://www.billboard.com/music/phil-collins,7.0,14.0,27.0
+131,1,The Beatles,https://www.billboard.com/music/the-beatles,20.0,34.0,71.0
+132,The Monkees,The Monkees,https://www.billboard.com/music/the-monkees,3.0,6.0,20.0
+133,Whitesnake,Whitesnake,https://www.billboard.com/music/whitesnake,1.0,2.0,7.0
+134,Monkey Business,The Black Eyed Peas,https://www.billboard.com/music/the-black-eyed-peas,3.0,10.0,16.0
+135,Abbey Road,The Beatles,https://www.billboard.com/music/the-beatles,20.0,34.0,71.0
+136,My Kinda Party,Jason Aldean,https://www.billboard.com/music/jason-aldean,1.0,29.0,NA
+137,N Sync,,https://www.billboard.com/music/,NA,NA,NA
+138,Bad,Michael Jackson,https://www.billboard.com/music/michael-jackson,13.0,29.0,50.0
+139,Get Rich Or Die Tryin',50 Cent,https://www.billboard.com/music/50-cent,4.0,13.0,39.0
+140,Red,Taylor Swift,https://www.billboard.com/music/taylor-swift,5.0,22.0,75.0
+141,Home,Dixie Chicks,https://www.billboard.com/music/dixie-chicks,3.0,17.0,NA
+142,Grease,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+143,Red Octopus,Jefferson Starship,https://www.billboard.com/music/jefferson-starship,2.0,17.0,NA
+144,American Pie,Don McLean,https://www.billboard.com/music/don-mclean,1.0,2.0,9.0
+145,Honky Chateau,Elton John,https://www.billboard.com/music/elton-john,9.0,27.0,67.0
+146,Led Zeppelin II,Led Zeppelin,https://www.billboard.com/music/led-zeppelin,1.0,10.0,NA
+147,Konvicted,Akon,https://www.billboard.com/music/akon,2.0,13.0,37.0
+148,The Long Run,Eagles,https://www.billboard.com/music/eagles,5.0,10.0,21.0
+149,Off The Wall,Michael Jackson,https://www.billboard.com/music/michael-jackson,13.0,29.0,50.0
+150,Back To Black,Amy Winehouse,https://www.billboard.com/music/amy-winehouse,1.0,3.0,NA
+151,American Fool,John Cougar,https://www.billboard.com/music/john-cougar,1.0,3.0,9.0
+152,Tha Carter III,Lil Wayne,https://www.billboard.com/music/lil-wayne,3.0,20.0,136.0
+153,A Day Without Rain,Enya,https://www.billboard.com/music/enya,2.0,5.0,NA
+154,Unforgettable,Nat King Cole,https://www.billboard.com/music/nat-king-cole,2.0,30.0,NA
+155,One Of These Nights,Eagles,https://www.billboard.com/music/eagles,5.0,10.0,21.0
+156,More Of The Monkees,The Monkees,https://www.billboard.com/music/the-monkees,3.0,6.0,20.0
+157,M!Ssundaztood,P!nk,https://www.billboard.com/music/pnk,4.0,15.0,29.0
+158,Totally Krossed Out,Kris Kross,https://www.billboard.com/music/kris-kross,1.0,1.0,7.0
+159,Whitney,Whitney Houston,https://www.billboard.com/music/whitney-houston,11.0,23.0,39.0
+160,Woodstock,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+161,That's The Way Of The World,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+162,Silver Side Up,Nickelback,https://www.billboard.com/music/nickelback,1.0,6.0,19.0
+163,Titanic,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+164,Let's Talk About Love,Celine Dion,https://www.billboard.com/music/celine-dion,4.0,10.0,21.0
+165,Chicago V,Chicago,https://www.billboard.com/music/chicago,3.0,20.0,46.0
+166,Funny Girl,Barbra Streisand,https://www.billboard.com/music/barbra-streisand,5.0,12.0,41.0
+167,August & Everything After,Counting Crows,https://www.billboard.com/music/counting-crows,3.0,NA,NA
+168,Glass Houses,Billy Joel,https://www.billboard.com/music/billy-joel,3.0,13.0,42.0
+169,Reckless,Bryan Adams,https://www.billboard.com/music/bryan-adams,4.0,11.0,25.0
+170,What Now My Love,Herb Alpert & The Tijuana Brass,https://www.billboard.com/music/herb-alpert-the-tijuana-brass,NA,NA,NA
+171,Diana Ross And The Supremes Greatest Hits,Diana Ross & The Supremes,https://www.billboard.com/music/diana-ross-the-supremes,NA,NA,NA
+172,Dookie,Green Day,https://www.billboard.com/music/green-day,2.0,9.0,NA
+173,Disraeli Gears,Cream,https://www.billboard.com/music/cream,2.0,5.0,NA
+174,Nellyville,Nelly,https://www.billboard.com/music/nelly,4.0,14.0,36.0
+175,Captain Fantastic And The Brown Dirt Cowboy,Elton John,https://www.billboard.com/music/elton-john,9.0,27.0,67.0
+176,You Don't Mess Around With Jim,Jim Croce,https://www.billboard.com/music/jim-croce,2.0,5.0,10.0
+177,Harvest,Neil Young,https://www.billboard.com/music/neil-young,1.0,1.0,11.0
+178,In The Wind,"Peter, Paul & Mary",https://www.billboard.com/music/peter-paul-mary,1.0,6.0,19.0
+179,True Blue,Madonna,https://www.billboard.com/music/madonna,12.0,38.0,57.0
+180,Songs From The Big Chair,Tears For Fears,https://www.billboard.com/music/tears-for-fears,2.0,4.0,9.0
+181,Weathered,Creed,https://www.billboard.com/music/creed,1.0,4.0,7.0
+182,Dark Horse,Nickelback,https://www.billboard.com/music/nickelback,1.0,6.0,19.0
+183,Private Dancer,Tina Turner,https://www.billboard.com/music/tina-turner,1.0,6.0,17.0
+184,Bella Donna,Stevie Nicks,https://www.billboard.com/music/stevie-nicks,4.0,14.0,NA
+185,Houses Of The Holy,Led Zeppelin,https://www.billboard.com/music/led-zeppelin,1.0,10.0,NA
+186,Up All Night,One Direction,https://www.billboard.com/music/one-direction,6.0,29.0,NA
+187,Meet The Beatles!,The Beatles,https://www.billboard.com/music/the-beatles,20.0,34.0,71.0
+188,Bridge Over Troubled Water,Simon & Garfunkel,https://www.billboard.com/music/simon-garfunkel,3.0,8.0,17.0
+189,Pure Heroine,Lorde,https://www.billboard.com/music/lorde,1.0,2.0,8.0
+190,First Take,Roberta Flack,https://www.billboard.com/music/roberta-flack,3.0,6.0,18.0
+191,52nd Street,Billy Joel,https://www.billboard.com/music/billy-joel,3.0,13.0,42.0
+192,Scarecrow,John Mellencamp,https://www.billboard.com/music/john-mellencamp,1.0,10.0,29.0
+193,Back Home Again,John Denver,https://www.billboard.com/music/john-denver,4.0,7.0,32.0
+194,Led Zeppelin Iv,Led Zeppelin,https://www.billboard.com/music/led-zeppelin,1.0,10.0,NA
+195,Cosmo's Factory,Creedence Clearwater Revival,https://www.billboard.com/music/creedence-clearwater-revival,9.0,16.0,NA
+196,Romeo + Juliet,Soundtrack,https://www.billboard.com/music/soundtrack,72.0,272.0,1652.0
+197,Yourself Or Someone Like You,matchbox 20,https://www.billboard.com/music/matchbox-20,NA,NA,NA
+198,In Through The Out Door,Led Zeppelin,https://www.billboard.com/music/led-zeppelin,1.0,10.0,NA
+199,Christina Aguilera,Christina Aguilera,https://www.billboard.com/music/christina-aguilera,5.0,11.0,30.0
+200,The 20/20 Experience,Justin Timberlake,https://www.billboard.com/music/justin-timberlake,5.0,17.0,29.0
