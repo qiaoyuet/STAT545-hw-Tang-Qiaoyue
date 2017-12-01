@@ -103,4 +103,36 @@ get_stats_safe <- purrr::possibly(get_stats, "None available")
 df <- df %>% 
   mutate(Stats = map(Link, get_stats_safe))
 
+No_1_hits <- c()
+for (i in 1:200) {
+  No_1_hits[i] <- df$Stats[[i]][1]
+}
+No_1_hits
+
+Top_10_hits <- c()
+for(i in 1:200) {
+  Top_10_hits[i] <- df$Stats[[i]][2]
+}
+Top_10_hits
+
+Songs <- c()
+for(i in 1:200) {
+  Songs[i] <- df$Stats[[i]][3]
+}
+Songs
+
+df <- data_frame(Rank = Rank,
+                 Album = Album,
+                 Artist = Artist,
+                 Link = glue("https://www.billboard.com/music/{Artist}") %>% 
+                   str_to_lower() %>% 
+                   str_replace_all(" ","-") %>% 
+                   str_replace_all("&","") %>% 
+                   str_replace_all("'","") %>% 
+                   str_replace_all("--","-") %>% 
+                   str_replace_all(",","") %>% 
+                   str_replace_all("!",""),
+                 No_1_hits = No_1_hits,
+                 Top_10_hits = Top_10_hits,
+                 Songs = Songs)
 ```
