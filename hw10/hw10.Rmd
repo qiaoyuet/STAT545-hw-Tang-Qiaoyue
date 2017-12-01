@@ -13,8 +13,11 @@ library(glue)
 library(stringr)
 library(rvest)
 library(xml2)
+library(ggplot2)
+library(httr)
 ```
 
+## Scrape data
 
 ```{r}
 my_url <- "https://www.billboard.com/charts/greatest-billboard-200-albums#"
@@ -61,42 +64,16 @@ df <- data_frame(Rank = Rank,
                    str_replace_all(",","") %>% 
                    str_replace_all("!",""))
 
-# df$Link[5] <- NA
-# df$Link[13] <- NA
-# df$Link[137] <- NA
-# df$Link[170] <- NA
-# df$Link[171] <- NA
-# df$Link[197] <- NA
 df$Link[24] <- "https://www.billboard.com/music/mc-hammer"
-# df$Link[30] <- "https://www.billboard.com/music/hootie-the-blowfish"
-# df$Link[53] <- "https://www.billboard.com/music/blood-sweat-tears"
-# df$Link[65] <- "https://www.billboard.com/music/guns-n-roses"
-# df$Link[106] <- "https://www.billboard.com/music/mumford-sons"
 
 
 get_stats <- function(link) {
   link %>% 
     read_html() %>% 
     html_nodes(css = ".artist-section--chart-history__stats__stat--number") %>% 
-    #html_attr("href") %>%
     html_text() %>% 
     return()
 }
-
-# get_stats(df$Link[4])[1] # No.1 Hits
-# get_stats(df$Link[4])[2] # Top 10 Hits
-
-
-# itr = 0
-# for (i in df$Link) {
-#   itr <- itr+1
-#   print(itr)
-#   if (is.na(i)) {
-#     print(NA)
-#   } else {
-#     print(get_stats(i))
-#   }
-# }
 
 get_stats_safe <- purrr::possibly(get_stats, "None available")
 
@@ -121,7 +98,7 @@ for(i in 1:200) {
 }
 Songs
 
-df <- data_frame(Rank = Rank,
+df_clean <- data_frame(Rank = Rank,
                  Album = Album,
                  Artist = Artist,
                  Link = glue("https://www.billboard.com/music/{Artist}") %>% 
@@ -132,7 +109,17 @@ df <- data_frame(Rank = Rank,
                    str_replace_all("--","-") %>% 
                    str_replace_all(",","") %>% 
                    str_replace_all("!",""),
-                 No_1_hits = No_1_hits,
-                 Top_10_hits = Top_10_hits,
-                 Songs = Songs)
+                 No_1_hits = as.numeric(No_1_hits),
+                 Top_10_hits = as.numeric(Top_10_hits),
+                 Songs = as.numeric(Songs))
 ```
+
+## Analysis on clean dataframe
+
+```{r}
+which.max(df_clean$No_1_hits)
+
+hist(df_clean$No_1_hits)
+```
+
+
