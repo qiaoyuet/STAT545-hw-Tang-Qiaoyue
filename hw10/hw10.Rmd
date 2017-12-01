@@ -54,39 +54,58 @@ df <- data_frame(Rank = Rank,
                  Artist = Artist,
                  Link = glue("https://www.billboard.com/music/{Artist}") %>% 
                    str_to_lower() %>% 
-                   str_replace_all(" ","-"))
+                   str_replace_all(" ","-") %>% 
+                   str_replace_all("&","") %>% 
+                   str_replace_all("'","") %>% 
+                   str_replace_all("--","-") %>% 
+                   str_replace("m.c.","mc"))
 
-df$Link[5] <- NA
-df$Link[13] <- NA
-df$Link[137] <- NA
-df$Link[170] <- NA
-df$Link[171] <- NA
-df$Link[197] <- NA
-df$Link[24] <- "https://www.billboard.com/music/mc-hammer"
-df$Link[30] <- "https://www.billboard.com/music/hootie-the-blowfish"
+# df$Link[5] <- NA
+# df$Link[13] <- NA
+# df$Link[137] <- NA
+# df$Link[170] <- NA
+# df$Link[171] <- NA
+# df$Link[197] <- NA
+# df$Link[24] <- "https://www.billboard.com/music/mc-hammer"
+# df$Link[30] <- "https://www.billboard.com/music/hootie-the-blowfish"
+# df$Link[53] <- "https://www.billboard.com/music/blood-sweat-tears"
+# df$Link[65] <- "https://www.billboard.com/music/guns-n-roses"
+# df$Link[106] <- "https://www.billboard.com/music/mumford-sons"
 
-df$Link[4]
+
 get_stats <- function(link) {
   link %>% 
     read_html() %>% 
     html_nodes(css = ".artist-section--chart-history__stats__stat--number") %>% 
+    #html_attr("href") %>%
     html_text() %>% 
     return()
 }
-get_stats(df$Link[4])[1] # No.1 Hits
-get_stats(df$Link[4])[2] # Top 10 Hits
+
+# get_stats(df$Link[4])[1] # No.1 Hits
+# get_stats(df$Link[4])[2] # Top 10 Hits
 
 
-#test <- c(df$Link[1],df$Link[2],df$Link[3],df$Link[4])
-itr = 0
-for (i in df$Link) {
-  itr <- itr+1
-  print(itr)
-  if (is.na(i)) {
-    print(NA)
-  } else {
-    print(get_stats(i))
-  }
-}
+# itr = 0
+# for (i in df$Link) {
+#   itr <- itr+1
+#   print(itr)
+#   if (is.na(i)) {
+#     print(NA)
+#   } else {
+#     print(get_stats(i))
+#   }
+# }
+
+get_stats_safe <- purrr::possibly(get_stats, "None available")
+
+df <- df %>% 
+  mutate(Stats = map(Link, get_stats_safe))
 
 ```
+
+
+```{r}
+get_stats_safe(df$Link[1])
+```
+
