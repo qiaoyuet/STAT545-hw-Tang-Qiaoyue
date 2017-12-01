@@ -17,6 +17,7 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
 | [HW07](https://github.com/qiaoyuet/STAT545-hw07-Tang-Qiaoyue) | Automate Data Analysis Pipeline with Makefile |
 | [HW08](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw08) | Building shiny app: BC Liquor Store Prices |
 | [HW09](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw09) | Building R Package: foofactors |
+| [HW10](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw10) | Scrape Webpage |
 
 ## Links
 
@@ -54,6 +55,10 @@ This is a repository for STAT545 homeworks. Please comment on my errors if you s
     + Continue with tutorial in class
     + Add more functions
     + Update documentations and unit tests
+- [hw10](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/tree/master/hw10)
+    + Scrape webpage using package rvest
+    + Write into a clean dataframe
+    + Perform basic downstream analysis
 
 ## About me
 

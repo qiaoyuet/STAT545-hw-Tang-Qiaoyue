@@ -6,9 +6,9 @@ In this homework, I demonstrated how to scrape a webpage using r packages `rvest
 
 ## Links
 
-[Link to md file]()
+[Link to md file](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/blob/master/hw10/hw10.md)
 
-[Link to the cleaned dataframe]()
+[Link to the cleaned dataframe](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue/blob/master/hw10/billboard.csv)
 
 [Return to main homework directory](https://github.com/qiaoyuet/STAT545-hw-Tang-Qiaoyue)
 
