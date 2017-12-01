@@ -58,7 +58,8 @@ df <- data_frame(Rank = Rank,
                    str_replace_all("&","") %>% 
                    str_replace_all("'","") %>% 
                    str_replace_all("--","-") %>% 
-                   str_replace("m.c.","mc"))
+                   str_replace_all(",","") %>% 
+                   str_replace_all("!",""))
 
 # df$Link[5] <- NA
 # df$Link[13] <- NA
@@ -66,7 +67,7 @@ df <- data_frame(Rank = Rank,
 # df$Link[170] <- NA
 # df$Link[171] <- NA
 # df$Link[197] <- NA
-# df$Link[24] <- "https://www.billboard.com/music/mc-hammer"
+df$Link[24] <- "https://www.billboard.com/music/mc-hammer"
 # df$Link[30] <- "https://www.billboard.com/music/hootie-the-blowfish"
 # df$Link[53] <- "https://www.billboard.com/music/blood-sweat-tears"
 # df$Link[65] <- "https://www.billboard.com/music/guns-n-roses"
@@ -103,9 +104,3 @@ df <- df %>%
   mutate(Stats = map(Link, get_stats_safe))
 
 ```
-
-
-```{r}
-get_stats_safe(df$Link[1])
-```
-
